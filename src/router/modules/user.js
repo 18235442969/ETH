@@ -4,12 +4,12 @@
 * @Last Modified by:   monkey
 * @Last Modified time: 2018-09-13 10:19:48
 */
-import HelloWorld from '@/components/HelloWorld'
+import Login from '@/views/user/Login'
 
 const userRouter = {
-	path: '/',
-  name: 'HelloWorld',
-  component: HelloWorld
+	path: '/login',
+  name: 'login',
+  component: Login
 }
 
 
