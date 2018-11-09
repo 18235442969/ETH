@@ -11,6 +11,8 @@ import {AlertPlugin, ConfirmPlugin, LoadingPlugin, ToastPlugin} from 'vux'
 import validation from "./utils/validation";
 import vueUtils from "./utils/vuxUtils";
 
+import i18n from './i18n/index';
+
 Vue.config.productionTip = false
 
 FastClick.attach(document.body)
@@ -31,6 +33,7 @@ new Vue({
   el: '#app',
   router,
   store,
+  i18n,
   components: { App },
   template: '<App/>'
 })

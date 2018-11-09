@@ -8,6 +8,8 @@ import service from '@/utils/service';
 
 /**
  * [登录]
+ * @param  {[type]} options.mob  [手机号]
+ * @param  {[type]} options.pw   [密码]
  */
 const login = ({ mob, pw }) => {
 	const data = {
@@ -19,15 +21,32 @@ const login = ({ mob, pw }) => {
 
 /**
  * [发送验证码]
+ * @param  {[type]} options.mob  [手机号]
  */
 const sendCode  = ({ mob }) => {
 	const data = {
 		mob
 	};
-	return service.post('/SendCode', data);
+	return service.post('/sendcode', data);
+}
+
+/**
+ * [注册]
+ * @param  {[type]} options.cc  [国家区号]
+ * @param  {[type]} options.mob  [手机号]
+ * @param  {[type]} options.pw   [密码]
+ * @param  {[type]} options.pmob [推荐人id或者手机号]
+ * @param  {[type]} options.code [验证码]
+ */
+const regist  = ({ cc, mob, pw, pmob, code }) => {
+	const data = {
+		mob
+	};
+	return service.post('/regist', data);
 }
 
 export {
 	login,
-	sendCode
+	sendCode,
+	regist
 }

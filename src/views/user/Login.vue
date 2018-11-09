@@ -1,6 +1,6 @@
 <template>
   <div class="login">
-    asd
+    {{ $t("base.submitBtn") }}
   </div>
 </template>
 
@@ -30,7 +30,8 @@ export default {
     }
   },
   mounted() {
-    this.sendCode();
+    // this.sendCode();
+    console.log(this.$t('base.submitBtn'))
   },
   watch: {
   }
