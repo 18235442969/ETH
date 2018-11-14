@@ -1,0 +1,160 @@
+.home{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	overflow: none;
+}
+.home-container{
+	position: absolute;
+	width: 100%;
+	height: calc(100vh - 43px);
+	background-color: #f5f4f7;
+	overflow-y: auto;
+}
+
+.home-footer{
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	overflow: none;
+}
+
+.iconfont{
+	font-size: 1.2rem;
+}
+//================Ecolog.vue===============
+.ecolog{
+	width: 100%;
+	.bg{
+		width: 100%;
+		height: 13.5rem;
+	}
+	.container{
+		position: absolute;
+		top: 0;
+		width: 100%;
+		z-index: 10;
+		color: #fff;
+		.ecolog-header{
+			padding: 10px 15px 0 15px;
+			.level{
+				color: #f58723;
+				font-size: 1.1rem;
+			}
+			.activation{
+				font-size: 0.9rem;
+				text-align: right;
+			}
+		}
+		.finance{
+			.totalPrice{
+				margin-top: 1rem;
+				text-align: center;
+				font-size: 2.5rem;
+			}
+			.introduce{
+				text-align: center;
+				font-size: 0.8rem;
+			}
+			.btn-list{
+				margin-top: 0.8rem;
+				text-align: center;
+				.putInBtn, .putOutBtn{
+					width: 5rem;
+					height: 1.8rem;
+					border: none;
+					border-radius: 30px;
+					background-color: #2571e8;
+					color: #fff;
+					font-size: 0.8rem;
+				}
+				.putOutBtn{
+					margin-left: 4rem;
+				}
+			}
+		}
+		.price{
+			position: absolute;
+			top: 11rem;
+			margin-left: 10%;
+			padding: 0 1.3rem;
+			width: 80%;
+			height: 3rem;
+			line-height: 3rem;
+			text-align: center;
+			background-color: #fff;
+			border-radius: 5px;
+			color: #282525;
+			.title{
+				font-size: 1rem;
+			}
+			.num{
+				font-size: 1.05rem;
+				text-align: right;
+			}
+		}
+		.operation{
+			position: absolute;
+			top: 16rem;
+			width: 94%;
+			margin-left: 2.5%;
+			color: #282525;
+			text-align: center;
+		}
+	}
+}
+.operation-item{
+	display: inline-block;
+	width: 47%;
+	background-color: #fff;
+	height: 6rem;
+}
+
+.operation-img{
+	text-align: center;
+	line-height: 6rem;
+	img{
+		width: 3rem;
+		height: 3rem;
+	}
+}
+
+.operation-content{
+	font-size: 0.9rem;
+}
+//=============================Market.vue===============
+.market{
+	width: 100%;
+	margin-top: 10px;
+}
+
+.market-item{
+	padding: 15px 0;
+	background-color: #fff;
+	border-bottom: 1px solid #ecedee;
+	font-size: 0.9rem;
+	color: #282525;
+	.market-name{
+		text-align: right;
+	}
+	.market-price{
+		font-size: 1rem;
+		text-align: center;
+	}
+	.market-time{
+		padding-right: 15px;
+		font-size: 0.8rem;
+		color: #9a9b9c;
+		text-align: right;
+	}
+}
+
+.rose{
+	color: #eb1128;
+}
+
+.fall{
+	color: #00af68;
+}
+
+

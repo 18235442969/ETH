@@ -4,12 +4,23 @@
 * @Last Modified by:   monkey
 * @Last Modified time: 2018-09-13 10:19:48
 */
-import Login from '@/views/user/Login'
+import Layout from '@/views/layout/Layout.vue'
+import ResetPassword from '@/views/user/ResetPassword.vue'
+
 
 const userRouter = {
-	path: '/login',
-  name: 'login',
-  component: Login
+	path: '/user',
+  component: Layout,
+  children: [
+  	{
+  		path: 'resetPassword',
+      component: ResetPassword,
+      name: 'resetPassword',
+      meta: {
+      	title: 'changePasswordTitle',
+      }
+  	}
+  ]
 }
 
 

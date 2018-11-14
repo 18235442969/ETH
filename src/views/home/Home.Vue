@@ -1,0 +1,90 @@
+<template>
+  <div class="home">
+    <div class="home-container">
+      <ecolog v-show="footIndex == 0" :invest="invest"></ecolog>
+      <market v-show="footIndex == 1"></market>
+      <mail v-show="footIndex == 2"></mail>
+      <user v-show="footIndex == 3"></user>
+    </div>
+    <div class="home-footer">
+      <tabbar v-model="footIndex">
+        <tabbar-item>
+          <i slot="icon" class="icon iconfont icon-lingxing"></i>
+          <span slot="label">{{ $t("home.homeTabOne") }}</span>
+        </tabbar-item>
+        <tabbar-item>
+          <i slot="icon" class="icon iconfont icon-hangqing"></i>
+          <span slot="label">{{ $t("home.homeTabTwo") }}</span>
+        </tabbar-item>
+        <tabbar-item>
+          <i slot="icon" class="icon iconfont icon-xinxiangtianchong"></i>
+          <span slot="label">{{ $t("home.homeTabThree") }}</span>
+        </tabbar-item>
+        <tabbar-item>
+          <i slot="icon" class="icon iconfont icon-wode-copy"></i>
+          <span slot="label">{{ $t("home.homeTabFour") }}</span>
+        </tabbar-item>
+      </tabbar>
+    </div>
+  </div>
+</template>
+
+<script>
+import { Ecolog, Market, Mail, User } from './components';
+import { Tabbar, TabbarItem } from 'vux';
+import { getBalance } from '../../api/user.js';
+
+export default {
+  name: 'home',
+  components: {
+    Ecolog,
+    Market,
+    Mail,
+    User,
+    Tabbar,
+    TabbarItem
+  },
+  data() {
+    return {
+      footIndex: 0,
+      invest: 0
+    }
+  },
+  computed: {
+  },
+  methods: {
+    /**
+     * [getBalance 获取个人资产]
+     */
+    getBalance: async function() {
+      try {
+        let res = await getBalance();
+        if (res.data.succeed == 'true') {
+          this.invest = res.data.data.invest;
+        } else {
+          this.vuxUtils.showWarn(this.$t('home.getBalanceWarnText'));
+        }
+      } catch(e) {
+        console.log(e)
+        this.vuxUtils.showWarn(this.$t('home.getBalanceWarnText'));
+      }
+    }
+  },
+  mounted() {
+    this.getBalance();
+  }
+}
+</script>
+
+<style>
+  .weui-tabbar{
+    background-color: #fff !important;
+  }
+  .weui-tabbar__icon{
+    height: 20px !important;
+  }
+</style>
+
+<style rel="stylesheet/scss" lang="scss" scoped>
+  @import "./Home.scss";
+</style>

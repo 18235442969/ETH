@@ -1,40 +1,54 @@
 <template>
-  <div id="app">
+  <section class="app-main">
     <transition :name="transitionName">
-    	<router-view class="child-view" />
+      <router-view :key="key" class="child-view"/>
     </transition>
-  </div>
+  </section>
 </template>
 
 <script>
 export default {
-  name: 'App',
+  name: 'AppMain',
   data() {
     return {
       transitionName: 'slide-left'
     }
   },
+  computed: {
+    key() {
+      return this.$route.fullPath
+    }
+  },
+  methods: {
+  },
+  created() {
+  },
   watch: {
-    '$route'(value) {
-      let isBack = this.$router.isAppBack;
+    '$route'() {
+      let isBack = this.$router.isBack;
       if (isBack) {
         this.transitionName = 'slide-right';
       } else {
         this.transitionName = 'slide-left';
       }
-      this.$router.isAppBack = false;
+      this.$router.isBack = false;
     }
   }
 }
 </script>
 
-
-<style rel="stylesheet/scss" lang="scss">
-  @import "@/styles/main.scss";
+<style rel="stylesheet/scss" lang="scss" scoped>
+  .app-main {
+    /*84 = navbar + tags-view = 50 +34 */
+    min-height: calc(100vh - 45px);
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+  }
   .child-view {
     position: absolute;
     width:100%;
-    transition: all 0.2s cubic-bezier(.55,0,.1,1);
+    transition: all .2s cubic-bezier(.55,0,.1,1);
   }
   .slide-left-enter, .slide-right-leave-active {
     opacity: 0;
@@ -47,3 +61,4 @@ export default {
     transform: translate(-100px, 0);
   }
 </style>
+

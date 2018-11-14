@@ -193,7 +193,7 @@ const passwordValid = (password) => {
  * [手机号验证]
  */
 const isPhone = (phone) => {
-    let reg = /^1[34578]\d{9}$/;
+    let reg = /^1[1234567890]\d{9}$/;
     return reg.test(phone);
 }
 export default {

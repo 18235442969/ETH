@@ -6,6 +6,7 @@ import FastClick from 'fastclick'
 import router from './router'
 import store from './store'
 import './permission' // permission control
+import './assets/fonts/iconfont.css';
 
 import {AlertPlugin, ConfirmPlugin, LoadingPlugin, ToastPlugin} from 'vux'
 import validation from "./utils/validation";

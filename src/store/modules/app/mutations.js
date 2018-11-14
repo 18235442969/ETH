@@ -1,7 +1,7 @@
-const SET_LANGUAGE = (state, language) => {
+const CHANGELANGUAGE = (state, language) => {
   state.language = language
 }
 
 export default {
-  SET_LANGUAGE
+  CHANGELANGUAGE
 }

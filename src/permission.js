@@ -9,7 +9,7 @@ import store from "./store";
 import auth from './utils/auth' // 验权
 
 
-const whiteList = ['/login', '/registe'];
+const whiteList = ['/login', '/registe', '/user/resetPassword'];
 
 router.beforeEach((to, from, next) => {
 	// store.dispatch('app/changeLoading', true);

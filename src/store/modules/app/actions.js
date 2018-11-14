@@ -1,11 +1,11 @@
 /**
- * [改变标题内容]
- * @param  {[String]} title [标题]
+ * [改变语言]
+ * @param  {[String]} language [语言]
  */
-const changeAppTitle = ({state, commit, rootState}, title) => {
-  commit('CHANGEAPPTITLE', title)
+const changeLanguage = ({state, commit, rootState}, language) => {
+  commit('CHANGELANGUAGE', language)
 }
 
 export default {
-  changeAppTitle,
+  changeLanguage,
 }

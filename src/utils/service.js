@@ -72,31 +72,28 @@ service.interceptors.request.use(config => {
 
   let initParams = {
     server: appConfig.server,
-    appkey: config.url.substring(1),
+    appkey: config.url.substring(1) == 'login' ? config.data.appkey : config.url.substring(1),
     time: new Date().getTime(),
     format: appConfig.format,
     method: config.url.substring(1)
   }
-
-  config.headers['server'] = appConfig.server;
-  config.headers['appkey'] = config.url.substring(1);
-  config.headers['time'] = new Date().getTime();
-  config.headers['method'] = config.url.substring(1);
-  config.headers['format'] = appConfig.format;
-
-
+  config.headers['server'] = initParams.server;
+  config.headers['appkey'] = initParams.appkey;
+  config.headers['time'] = initParams.time;
+  config.headers['method'] = initParams.method;
+  config.headers['format'] = initParams.format;
   //登录后从缓存拿取用户信息
   if (auth.getUserInfo()) {
     let localUserInfo = JSON.parse(auth.getUserInfo());
-    config.headers['appkey'] = localUserInfo.username;
-    config.data.appkey = localUserInfo.username;
+    config.headers['appkey'] = localUserInfo.mob;
+    initParams.appkey = localUserInfo.mob;
   }
 
   let md5Password = config.data.md5Password || localStorage.getItem('password') || config.url.substring(1);
   delete config.data.md5Password;
+  delete config.data.appkey;
 
   let signData = Object.assign(initParams, config.data);
-
   let sign = '';
   let signArr = [];
   for (let k in signData) {
@@ -105,9 +102,8 @@ service.interceptors.request.use(config => {
   signArr = bubbleSort(signArr);
 
   for (let i of signArr) {
-    sign += `${i}=${signData[i]}&`
+    sign += `${i}=${signData[i]}`
   }
-  sign = sign.substring(0, sign.lastIndexOf('&'))
   config.headers['sign'] = md5(sign+md5(md5Password));
 
   // if (signData.method === 'uploadn') {
