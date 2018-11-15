@@ -47,5 +47,6 @@ export default {
     height: 2rem;
     font-size: 0.85rem;
     padding: 0 5px;
+    color: #282525;
   }
 </style>

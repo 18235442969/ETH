@@ -10,7 +10,14 @@ const en = {
 	},
 	appTitle: {
 		changePasswordTitle: 'changePassword',
-		changesss: 'change'
+		changesss: 'change',
+		marketTitle: 'market',
+		mailTitle: 'mail',
+		userTitle: 'user',
+		settingTitle: 'setting',
+		userInfoTitle: 'userInfo',
+		payPasswordTitle: 'payPassword',
+		paymentMethodsTitle: 'paymentMethods',
 	},
 	login: {
 		usernamePlaceholder: 'ID/phone/Email',
@@ -67,6 +74,57 @@ const en = {
 			operationTwoText: 'lowerLevel',
 			operationThreeText: 'middleLevel',
 			operationFourText: 'highLevel',
+		},
+		mail: {
+			announcementText: 'announcement',
+			tradeText: 'trade',
+			customerServiceText: 'customerService',
+		},
+		user: {
+			balanceText: 'balance',
+			freezeText: 'freeze',
+			topUpBtnText: 'topUp',
+			withdrawalBtnText: 'withdrawal',
+			billText: 'bill',
+			recommendText: 'recommend',
+			familyText: 'family',
+			userInfoText: 'userInfo',
+			platformAnnouncementText: 'platformAnnouncement',
+			customerServiceText: 'customerService',
+			setting: {
+				aboutText: 'about',
+				versionText: 'version',
+				exitAppBtnText: 'exit',
+				exitConfirmContent: 'is sure exit?',
+				exitConfirmBtnText: 'confirm',
+				exitCancelBtnText: 'cancel',
+			},
+			userInfo: {
+				referrerIdText: 'referrerIdText',
+				phoneText: 'phoneText',
+				investmentGradeText: 'investmentGradeText',
+				starTeamText: 'starTeamText',
+				paymentMethodsText: 'paymentMethodsText',
+				loginPasswordText: 'loginPasswordText',
+				payPasswordText: 'payPasswordText',
+			},
+			paymentMethods: {
+				alipayPlaceholder: 'alipayPlaceholder',
+				wechatPlaceholder: 'wechatPlaceholder',
+				bankPlaceholder: 'bankPlaceholder',
+				cardnoPlaceholder: 'cardnoPlaceholder',
+				namePlaceholder: 'namePlaceholder',
+				alipayText: 'alipayText',
+				wechatText: 'wechatText',
+				tipsOneText: 'tipsOneText',
+				tipsTwoText: 'tipsTwoText',
+				bankText: 'bankText',
+				cardnoText: 'cardnoText',
+				nameText: 'nameText',
+				cardnoWarnText: 'cardnoWarnText',
+				accountWarnText: 'accountWarnText',
+				settingWarnText: 'settingWarnText',
+			}
 		}
 	}
 }

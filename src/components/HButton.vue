@@ -39,6 +39,7 @@ export default {
     width: 100%;
     height: 100%;
     background-color: #0c5fcc;
+    background: linear-gradient(to right, #3473e2 , #0c5fcc);
     border: none;
     color: #fff;
     border-radius: 30px;

@@ -36,7 +36,7 @@
 		z-index: 10;
 		color: #fff;
 		.ecolog-header{
-			padding: 10px 15px 0 15px;
+			padding: 8px 15px 0 15px;
 			.level{
 				color: #f58723;
 				font-size: 1.1rem;
@@ -95,7 +95,7 @@
 		}
 		.operation{
 			position: absolute;
-			top: 16rem;
+			top: 15rem;
 			width: 94%;
 			margin-left: 2.5%;
 			color: #282525;
@@ -125,10 +125,21 @@
 //=============================Market.vue===============
 .market{
 	width: 100%;
-	margin-top: 10px;
+}
+
+.markey-header, .mail-header{
+	width: 100%;
+	height: 45px;
+	line-height: 45px;
+	border-bottom: 0.8px solid #ebebeb;
+  background-color: #fff;
+  text-align: center;
+  color: #282525;
+  font-size: 1rem;
 }
 
 .market-item{
+	margin-top: 10px;
 	padding: 15px 0;
 	background-color: #fff;
 	border-bottom: 1px solid #ecedee;
@@ -157,4 +168,114 @@
 	color: #00af68;
 }
 
+//=================mail.vue==================================
+.platform, .customerService{
+	margin-top: 10px;
+}
+.announcement-item, .trade-item, .customerService-item{
+	background-color: #fff;
+	height: 3rem;
+	.logo{
+		text-align: center;
+	}
+	.content{
+		padding-left: 5px;
+	}
+}
+
+.announcement-item{
+	border-bottom: 1px solid #eeeff1;
+}
+
+.icon-gonggao{
+	color: #54a95d;
+}
+
+.icon-xinxi{
+	color: #0340bf;
+}
+
+.icon-kefu{
+	color: #fc7d00;
+}
+//=================User.vue=======================
+.user{
+	width: 100%;
+	.bg{
+		width: 100%;
+		height: 12.5rem;
+	}
+	.container{
+		position: absolute;
+		top: 0;
+		z-index: 10;
+		width: 100%;
+		height: 12.5rem;
+		color: #fff;
+		.user-header{
+			padding: 8px 15px 0 15px;
+			.title{
+				text-align: center;
+				font-size: 1.1rem;
+			}
+			.set{
+				text-align: right;
+			}
+			.icon-shezhi{
+				margin-top: -3px;
+				font-size: 1.8rem;
+			}
+		}
+		.money{
+			margin-top: 1rem;
+			text-align: center;
+			.title, .freeze{
+				font-size: 0.8rem;
+			}
+			.balance{
+				font-size: 2.5rem;
+			}
+		}
+	}
+}
+
+.user-btn{
+	margin-top: 1rem;
+	text-align: center;
+	.topUpBtn, .withdrawalBtn{
+		width: 5rem;
+		height: 1.8rem;
+		border: none;
+		border-radius: 30px;
+		background-color: #2571e8;
+		color: #fff;
+		font-size: 0.8rem;
+	}
+	.withdrawalBtn{
+		margin-left: 2rem;
+	}
+}
+
+.user-operation{
+	position: absolute;
+	top: 13.5rem;
+	width: 92.5%;
+	margin-left: 2.2%;
+	text-align: center;
+}
+.user-operation-item{
+	background-color: #fff;
+	height: 8rem;
+	text-align: center;
+	.user-operation-img{
+		margin-top: 1.4rem;
+		width: 3rem;
+		height: 3rem;
+	}
+	.user-operation-content{
+		margin-top: 1rem;
+		text-align: center;
+		font-size: 0.9rem;
+	}
+}
 

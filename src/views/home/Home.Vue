@@ -7,7 +7,7 @@
       <user v-show="footIndex == 3"></user>
     </div>
     <div class="home-footer">
-      <tabbar v-model="footIndex">
+      <tabbar v-model="footIndex" @on-index-change="changeTab">
         <tabbar-item>
           <i slot="icon" class="icon iconfont icon-lingxing"></i>
           <span slot="label">{{ $t("home.homeTabOne") }}</span>
@@ -32,7 +32,9 @@
 <script>
 import { Ecolog, Market, Mail, User } from './components';
 import { Tabbar, TabbarItem } from 'vux';
+import { mapState, mapActions } from 'vuex';
 import { getBalance } from '../../api/user.js';
+const appModule = 'app';
 
 export default {
   name: 'home',
@@ -51,8 +53,20 @@ export default {
     }
   },
   computed: {
+    ...mapState(appModule, {
+      appHomeTabIndex: state => state.appHomeTabIndex
+    })
   },
   methods: {
+    ...mapActions(appModule, {
+      changeTabIndex: 'changeTabIndex'
+    }),
+    /**
+     * [changeTabIndex 切换tab]
+     */
+    changeTab() {
+      this.changeTabIndex(this.footIndex);
+    },
     /**
      * [getBalance 获取个人资产]
      */
@@ -65,13 +79,15 @@ export default {
           this.vuxUtils.showWarn(this.$t('home.getBalanceWarnText'));
         }
       } catch(e) {
-        console.log(e)
         this.vuxUtils.showWarn(this.$t('home.getBalanceWarnText'));
       }
     }
   },
   mounted() {
     this.getBalance();
+  },
+  created() {
+    this.footIndex = this.appHomeTabIndex;
   }
 }
 </script>

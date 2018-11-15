@@ -1,5 +1,8 @@
 <template>
   <div class="market">
+    <div class="markey-header">
+      {{ $t("appTitle.marketTitle") }}
+    </div>
     <flexbox :gutter="0" class="market-item">
       <flexbox-item :span="1.5" class="market-name">
         ETH

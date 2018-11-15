@@ -57,9 +57,29 @@ const getBalance  = () => {
 	return service.post('/getbalance', data);
 }
 
+/**
+ * [设置用户收款方式]
+ * @param  {[String]} options.alipay [支付宝]
+ * @param  {[String]} options.wechat [微信]
+ * @param  {[String]} options.bank   [开户行]
+ * @param  {[String]} options.card   [银行卡号]
+ * @param  {[String]} options.acc    [姓名]
+ */
+const setUsertInfo  = ({ alipay='', wechat='', bank='', card='', acc=''}) => {
+	const data = {
+		alipay,
+		wechat,
+		bank,
+		card,
+		acc
+	};
+	return service.post('/setusertinfo', data);
+}
+
 export {
 	login,
 	sendCode,
 	regist,
-	getBalance
+	getBalance,
+	setUsertInfo
 }

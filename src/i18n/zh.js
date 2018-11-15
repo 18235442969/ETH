@@ -11,7 +11,13 @@ const zh = {
 	},
 	appTitle: {
 		changePasswordTitle: '修改登录密码',
-		changesss: '修改sss'
+		marketTitle: '行情',
+		mailTitle: '信箱',
+		userTitle: '行情',
+		settingTitle: '设置',
+		userInfoTitle: '个人信息',
+		payPasswordTitle: '支付密码',
+		paymentMethodsTitle: '收款方式',
 	},
 	login: {
 		usernamePlaceholder: '请输入ID，手机号或邮箱',
@@ -67,6 +73,57 @@ const zh = {
 			operationTwoText: '初级挂单',
 			operationThreeText: '中级挂单',
 			operationFourText: '高级挂单',
+		},
+		mail: {
+			announcementText: '平台公告',
+			tradeText: '交易信息',
+			customerServiceText: '在线客服',
+		},
+		user: {
+			balanceText: '余额',
+			freezeText: '冻结',
+			topUpBtnText: '充币',
+			withdrawalBtnText: '提币',
+			billText: '账单中心',
+			recommendText: '我的推荐',
+			familyText: '我的家族',
+			userInfoText: '个人信息',
+			platformAnnouncementText: '平台公告',
+			customerServiceText: '客服中心',
+			setting: {
+				aboutText: '关于',
+				versionText: '当前版本',
+				exitAppBtnText: '退出登录',
+				exitConfirmContent: '确定要退出吗?',
+				exitConfirmBtnText: '确定',
+				exitCancelBtnText: '取消',
+			},
+			userInfo: {
+				referrerIdText: '推荐人ID',
+				phoneText: '手机号',
+				investmentGradeText: '投资等级',
+				starTeamText: '团队等级',
+				paymentMethodsText: '收款方式',
+				loginPasswordText: '登录密码',
+				payPasswordText: '支付密码',
+			},
+			paymentMethods: {
+				alipayPlaceholder: '请输入支付宝账号',
+				wechatPlaceholder: '请输入微信账号',
+				bankPlaceholder: '请输入开户行',
+				cardnoPlaceholder: '请输入银行卡卡号',
+				namePlaceholder: '请输入持卡人姓名',
+				alipayText: '支付宝',
+				wechatText: '微信',
+				tipsOneText: '请绑定持卡人本人的银行卡',
+				tipsTwoText: '请至少填写一种收款方式',
+				bankText: '开户行',
+				cardnoText: '银行卡号',
+				nameText: '持卡人',
+				cardnoWarnText: '请完善您的银行卡信息',
+				accountWarnText: '请至少设置一个账号',
+				settingWarnText: '设置失败',
+			}
 		}
 	}
 }

@@ -151,6 +151,69 @@
 		height: 3rem;
 	}
 }
+//================Setting.vue======================
+.setting{
+	width: 100%;
+	height: 100%;
+	.about, .version{
+		padding: 10px;
+		height: 3rem;
+		background-color: #fff;
+		font-size: 0.8rem;
+		.content{
+			text-align: right;
+		}
+	}
+	.about{
+		margin-top: 10px;
+		border-bottom: 1px solid #ecedee;
+	}
+	.settingBtn{
+		margin-top: 2.5rem;
+		width: 75%;
+		height: 3rem;
+		margin-left: 12.5%;
+	}
+}
+//===============PaymentMethods.vue========================
+.paymentMethods{
+	.alipay, .wechat{
+		padding: 5px 15px;
+		margin-top: 10px;
+		background-color: #fff;
+		.title{
+			font-size: 0.85rem;
+		}
+	}
+	.bank{
+		margin-top: 10px;
+		.tips{
+			padding: 0 15px;
+			color: #c8c7ca;
+			font-size: 0.75rem;
+		}
+		.bankName, .cardno, .name{
+			padding: 5px 15px;
+			background-color: #fff;
+		}
+		.bankName, .cardno{
+			border-bottom: 1px solid #f0f1f2;
+		}
+		.bankName{
+			margin-top: 5px;
+		}
+		.name{
+			margin-bottom: 5px;
+		}
+	}
+	.botton{
+		width: 75%;
+		margin-left: 12.5%;
+		margin-top: 2rem;
+		height: 3rem;
+	}
+}
+
 
 
 

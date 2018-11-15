@@ -32,7 +32,7 @@
           </flexbox-item>
         </flexbox>
       </div>
-      <div class="operation">
+      <!-- <div class="operation">
         <flexbox :gutter="5">
           <flexbox-item :span="6" class="operation-item">
             <flexbox :gutter="0">
@@ -77,7 +77,7 @@
             </flexbox>
           </flexbox-item>
         </flexbox>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
