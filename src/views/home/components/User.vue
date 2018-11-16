@@ -75,8 +75,6 @@
 
 <script>
 import { Flexbox, FlexboxItem } from 'vux';
-import { mapActions } from 'vuex';
-const appModule = 'app';
 
 export default {
   name: 'user',
@@ -92,9 +90,6 @@ export default {
   computed: {
   },
   methods: {
-    ...mapActions(appModule, {
-      getEthPrice: 'getEthPrice'
-    }),
     /**
      * [changeAppPage 切换页面]
      * @param  {[String]} name [名称]
@@ -106,11 +101,7 @@ export default {
     }
   },
   mounted() {
-    this.getEthPrice().then(res => {
-      console.log(res)
-    }).catch(err => {
-      console.log(err)
-    })
+    
   }
 }
 </script>

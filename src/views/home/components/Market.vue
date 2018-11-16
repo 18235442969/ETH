@@ -8,11 +8,11 @@
         ETH
       </flexbox-item>
       <flexbox-item :span="5.5" class="market-price">
-        <span class="rose">￥1980.1212</span>
+        <span>￥{{ethPrice}}</span>
+        <!-- <span class="rose">￥{{ethPrice}}</span> -->
         <!-- <span class="fall">￥1980.1212</span> -->
       </flexbox-item>
       <flexbox-item :span="5" class="market-time">
-        2018-12-30 09:55
       </flexbox-item>
     </flexbox>
   </div>
@@ -20,6 +20,8 @@
 
 <script>
 import { Flexbox, FlexboxItem } from 'vux';
+import { mapState } from 'vuex'
+const appModule = 'app';
 
 export default {
   name: 'market',
@@ -32,6 +34,9 @@ export default {
     }
   },
   computed: {
+    ...mapState(appModule, {
+      ethPrice: state => state.ethPrice
+    })
   },
   methods: {
   },

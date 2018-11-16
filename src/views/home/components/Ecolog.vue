@@ -28,7 +28,7 @@
             ETH
           </flexbox-item>
           <flexbox-item :span="9" class="num">
-            ￥1454.25
+            ￥{{ethPrice}}
           </flexbox-item>
         </flexbox>
       </div>
@@ -85,6 +85,8 @@
 <script>
 import { Flexbox, FlexboxItem } from 'vux';
 import auth from '../../../utils/auth.js';
+import { mapState } from 'vuex'
+const appModule = 'app';
 
 export default {
   name: 'ecolog',
@@ -99,6 +101,9 @@ export default {
     }
   },
   computed: {
+    ...mapState(appModule, {
+      ethPrice: state => state.ethPrice
+    })
   },
   methods: {
   },

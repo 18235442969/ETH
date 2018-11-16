@@ -59,7 +59,8 @@ export default {
   },
   methods: {
     ...mapActions(appModule, {
-      changeTabIndex: 'changeTabIndex'
+      changeTabIndex: 'changeTabIndex',
+      getEthPrice: 'getEthPrice'
     }),
     /**
      * [changeTabIndex 切换tab]
@@ -81,10 +82,23 @@ export default {
       } catch(e) {
         this.vuxUtils.showWarn(this.$t('home.getBalanceWarnText'));
       }
+    },
+    /**
+     * [获取ETH行情价格]
+     */
+    getAllEthPrice: async function(){
+      try {
+        let res = await this.getEthPrice();
+        if (res.data.succeed == 'true') {
+        } else {
+        }
+      } catch(e) {
+      }
     }
   },
   mounted() {
     this.getBalance();
+    this.getAllEthPrice();
   },
   created() {
     this.footIndex = this.appHomeTabIndex;

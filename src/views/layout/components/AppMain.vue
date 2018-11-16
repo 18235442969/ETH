@@ -22,6 +22,7 @@ export default {
   methods: {
   },
   created() {
+    this.$router.isBack = false;
   },
   watch: {
     '$route'() {
