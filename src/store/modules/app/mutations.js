@@ -7,5 +7,6 @@ const CHANGETABINDEX = (state, index) => {
 }
 
 export default {
+	CHANGELANGUAGE,
   CHANGETABINDEX
 }

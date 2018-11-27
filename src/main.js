@@ -2,6 +2,7 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
+import VueClipboard from 'vue-clipboard2'
 import FastClick from 'fastclick'
 import router from './router'
 import store from './store'
@@ -23,6 +24,8 @@ Vue.use(AlertPlugin)
 Vue.use(ConfirmPlugin)
 Vue.use(LoadingPlugin)
 Vue.use(ToastPlugin)
+//复制功能
+Vue.use(VueClipboard)
 
 let bus = new Vue();
 Vue.prototype.bus = bus;

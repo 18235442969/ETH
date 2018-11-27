@@ -5,7 +5,7 @@
         <i class="icon iconfont icon-shouji1"></i>
       </flexbox-item>
       <flexbox-item :span="10">
-        <h-input :placeholder="$t('user.changePasswordUsernamePlaceholder')" inputClass="noline" type="text" v-model="username"></h-input>
+        <h-input :placeholder="$t('home.user.resetPassword.changePasswordUsernamePlaceholder')" inputClass="noline" type="text" v-model="username" :max="30"></h-input>
       </flexbox-item>
     </flexbox>
     <flexbox :gutter="0" class="resetPassword-code">
@@ -13,10 +13,10 @@
         <i class="icon iconfont icon-yanzhengma"></i>
       </flexbox-item>
       <flexbox-item :span="6">
-        <h-input :placeholder="$t('user.changePasswordCodePlaceholder')" inputClass="noline" type="text" v-model="code"></h-input>
+        <h-input :placeholder="$t('home.user.resetPassword.changePasswordCodePlaceholder')" inputClass="noline" type="text" v-model="code" :max="8"></h-input>
       </flexbox-item>
       <flexbox-item :span="4" class="codeBtn" @click.native="sendCode($event)">
-        {{ $t("user.changePasswordCodeText") }}
+        {{ $t("home.user.resetPassword.changePasswordCodeText") }}
       </flexbox-item>
     </flexbox>
     <flexbox :gutter="0" class="resetPassword-password">
@@ -24,7 +24,7 @@
         <i class="icon iconfont icon-suo"></i>
       </flexbox-item>
       <flexbox-item :span="10">
-        <h-input :placeholder="$t('user.changePasswordPasswordPlaceholder')" inputClass="noline" type="text" v-model="password"></h-input>
+        <h-input :placeholder="$t('home.user.resetPassword.changePasswordPasswordPlaceholder')" inputClass="noline" type="password" v-model="password" :max="30"></h-input>
       </flexbox-item>
     </flexbox>
     <div class="resetPassword-btn">
@@ -57,19 +57,19 @@ export default {
   computed: {
   },
   methods: {
-   /**
+    /**
      * [_countdown 验证码倒计时]
      */
     _countdown (e) {
       let element = e.target;
-      let num = 3;
+      let num = 60;
       var timer = setInterval(() => {
         num--;
         element.innerHTML = `${num} s`;
         element.style.color = '#9e9e9e'
         if (num === 0) {
           element.style.color = '#0c5fcc';
-          element.innerHTML = this.$t('user.changePasswordCodeText');
+          element.innerHTML = this.$t('home.user.resetPassword.changePasswordCodeText');
           this.isCodeSend = false;
           clearInterval(timer);
         }
@@ -81,7 +81,7 @@ export default {
           return;
         }
         if (this.valid.isStrEmpty(this.username)) {
-          return this.vuxUtils.showWarn(this.$t('user.usernameWarnText'));
+          return this.vuxUtils.showWarn(this.$t('home.user.resetPassword.usernameWarnText'));
         }
         this.$vux.loading.show();
         let res = await sendCode({
@@ -94,10 +94,12 @@ export default {
           this.isCodeSend = true;
           this.code = res.data.data;
         } else {
+          this.vuxUtils.showWarn(this.$t('base.codeSendError'));
           console.log(res)
         }
       } catch(e) {
         this.$vux.loading.hide();
+        this.vuxUtils.showWarn(this.$t('base.codeSendError'));
         console.log(e);
       }
     }

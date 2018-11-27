@@ -3,10 +3,10 @@
     <img src="../../../assets/image/ecologBg.png" class="bg">
     <div class="container">
       <flexbox :gutter="0" class="ecolog-header">
-        <flexbox-item :span="6" class="level">
+        <flexbox-item :span="10" class="level">
           <i>Lv.{{level}}</i>
         </flexbox-item>
-        <flexbox-item :span="6" class="activation">
+        <flexbox-item :span="2" class="activation" @click.native="putIn" v-if="state == 0">
           {{ $t("home.ecolog.headRightText") }}
         </flexbox-item>
       </flexbox>
@@ -18,8 +18,8 @@
           {{ $t("home.ecolog.introduceEth") }}ETH
         </div>
         <div class="btn-list">
-          <button class="putInBtn">{{ $t("home.ecolog.putInBtnText") }}</button>
-          <button class="putOutBtn">{{ $t("home.ecolog.putOutBtnText") }}</button>
+          <button class="putInBtn" @click="putIn">{{ $t("home.ecolog.putInBtnText") }}</button>
+          <button class="putOutBtn" @click="putOut">{{ $t("home.ecolog.putOutBtnText") }}</button>
         </div>
       </div>
       <div class="price">
@@ -78,12 +78,24 @@
           </flexbox-item>
         </flexbox>
       </div> -->
+      <div v-transfer-dom>
+        <popup v-model="putInShow" position="right" width="100%" :popup-style="popupOption">
+          <putin :amount="amount" v-on:close="hidePutIn" v-on:getBalance="$emit('getNewBalance')"></putin>
+        </popup>
+      </div>
+      <div v-transfer-dom>
+        <popup v-model="putOutShow" position="right" width="100%" :popup-style="popupOption">
+          <putout  v-on:close="hidePutOut"></putout>
+        </popup>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import { Flexbox, FlexboxItem } from 'vux';
+import { Flexbox, FlexboxItem, Popup, TransferDom } from 'vux';
+import Putin from './Putin.vue';
+import Putout from './Putout.vue';
 import auth from '../../../utils/auth.js';
 import { mapState } from 'vuex'
 const appModule = 'app';
@@ -92,12 +104,24 @@ export default {
   name: 'ecolog',
   components: {
     Flexbox,
-    FlexboxItem
+    FlexboxItem,
+    Popup,
+    Putin,
+    Putout
   },
-  props: ['invest'],
+  directives: {
+    TransferDom
+  },
+  props: ['invest', 'amount'],
   data() {
     return {
-      level: 0
+      popupOption: {
+        'z-index': 999
+      },
+      putInShow: false,
+      putOutShow: false,
+      level: 0,
+      state: 0
     }
   },
   computed: {
@@ -106,10 +130,29 @@ export default {
     })
   },
   methods: {
+    /**
+     * [putIn 投入]
+     */
+    putIn() {
+      this.putInShow = true;
+    },
+    /**
+     * [putOut 赎回]
+     */
+    putOut() {
+      this.putOutShow = true;
+    },
+    hidePutIn() {
+      this.putInShow = false;
+    },
+    hidePutOut() {
+      this.putOutShow = false;
+    }
   },
   mounted() {
     let userInfo =  JSON.parse(auth.getUserInfo());
     if (userInfo) {
+      this.state = userInfo.state;
       this.level = userInfo.level;
     }
   }

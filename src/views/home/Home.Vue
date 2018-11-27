@@ -1,10 +1,10 @@
 <template>
   <div class="home">
     <div class="home-container">
-      <ecolog v-show="footIndex == 0" :invest="invest"></ecolog>
+      <ecolog v-show="footIndex == 0" :invest="invest" :amount="amount" v-on:getNewBalance="getBalance"></ecolog>
       <market v-show="footIndex == 1"></market>
       <mail v-show="footIndex == 2"></mail>
-      <user v-show="footIndex == 3"></user>
+      <user v-show="footIndex == 3" :freeze="freeze" :amount="amount"></user>
     </div>
     <div class="home-footer">
       <tabbar v-model="footIndex" @on-index-change="changeTab">
@@ -31,9 +31,12 @@
 
 <script>
 import { Ecolog, Market, Mail, User } from './components';
+import Putin from './components/Putin.vue';
+
 import { Tabbar, TabbarItem } from 'vux';
 import { mapState, mapActions } from 'vuex';
-import { getBalance } from '../../api/user.js';
+import { getUserInfo, getBalance } from '../../api/user.js';
+import auth from '../../utils/auth.js'
 const appModule = 'app';
 
 export default {
@@ -44,12 +47,14 @@ export default {
     Mail,
     User,
     Tabbar,
-    TabbarItem
+    TabbarItem,
   },
   data() {
     return {
       footIndex: 0,
-      invest: 0
+      invest: 0,
+      amount: 0,
+      freeze: 0,
     }
   },
   computed: {
@@ -76,11 +81,29 @@ export default {
         let res = await getBalance();
         if (res.data.succeed == 'true') {
           this.invest = res.data.data.invest;
+          this.amount = res.data.data.amount;
+          this.freeze = res.data.data.freeze;
         } else {
           this.vuxUtils.showWarn(this.$t('home.getBalanceWarnText'));
         }
       } catch(e) {
         this.vuxUtils.showWarn(this.$t('home.getBalanceWarnText'));
+      }
+    },
+    /**
+     * [getUserInfo 获取用户个人信息]
+     */
+    getUserInfo: async function() {
+      try {
+        let userInfo = JSON.parse(auth.getUserInfo());
+        let res = await getUserInfo({
+          uid: userInfo.userid
+        });
+        if (res.data.succeed == 'true') {
+          let user = Object.assign(userInfo, res.data.data);
+        } else {
+        }
+      } catch(e) {
       }
     },
     /**
@@ -99,6 +122,7 @@ export default {
   mounted() {
     this.getBalance();
     this.getAllEthPrice();
+    this.getUserInfo();
   },
   created() {
     this.footIndex = this.appHomeTabIndex;

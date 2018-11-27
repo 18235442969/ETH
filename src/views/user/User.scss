@@ -151,6 +151,35 @@
 		height: 3rem;
 	}
 }
+//===========================PayPassword.vue=========
+.payPassword{
+	width: 100%;
+	height: 100%;
+	background-color: #f5f4f7;
+	.payPassword-password, .payPassword-phone, .payPassword-code{
+		padding: 5px 0;
+		background-color: #fff;
+		.payPassword-icon{
+			text-align: center;
+		}
+		.codeBtn{
+			text-align: right;
+			padding-right: 15px;
+			color: #0c5fcc;
+			font-size: 0.8rem;
+		}
+	}
+	.payPassword-phone, .payPassword-password{
+		margin-top: 10px;
+		border-bottom: 1px solid #edeeee;
+	}
+	.payPassword-btn{
+		margin-top: 2rem;
+		margin-left: 12.5%;
+		width: 75%;
+		height: 3rem;
+	}
+}
 //================Setting.vue======================
 .setting{
 	width: 100%;
@@ -213,12 +242,100 @@
 		height: 3rem;
 	}
 }
+//====================MyRecommend.vue============
+.myRecommendm, .myfamily{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	overflow-y: auto;
+}
+.myInfo{
+	margin: 10px 0;
+	width: 100%;
+	height: 4rem;
+	background-color: #fff;
+	padding: 0.5rem 0;
+	.title{
+		height: 1.5rem;
+		.content, .title-icon{
+			font-size: 0.9rem;
+			text-align: center;
+			.icon-dengji{
+				font-size: 0.8rem;
+			}
+		}
+	}
+}
+.recommend-info{
+	width: 100%;
+	background-color: #fff;
+}
 
+.recommend{
+	padding: 8px 15px;
+	font-size: 0.8rem;
+	border-bottom: 1px solid #ebeded;
+}
 
+.recommend-bottom{
+	margin-top: 5px;
+}
 
+.recommend-username, .recommend-time{
+	text-align: right;
+}
 
+.recommend-level{
+	color: #f58723;
+	font-size: 1rem;
+}
 
-
+.recommend-time{
+	font-size: 0.7rem;
+	color: #636465;
+}
+//===========Bill.vue=============
+.bill{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-color: #fff;
+}
+.bill-tab{
+	padding: 0 10px;
+}
+.tab-item{
+	padding: 10px 0;
+	text-align: center;
+	font-size: 0.75rem;
+}
+.choose{
+	border-bottom: 1px solid #2f67cb;
+	color: #2f67cb;
+}
+.bill-container{
+	width: 100%;
+	height: calc(100vh - 103px);
+	overflow-y: auto;
+}
+.bill-container{
+}
+.bill-all{
+	padding: 10px 10px;
+	border-bottom: 1px solid #f2f4f4;
+}
+.bill-title{
+	font-size: 0.85rem;
+}
+.bill-time{
+	margin-top: 3px;
+	font-size: 0.7rem;
+	color: #a5a6a7;
+}
+.bill-coin{
+	font-size: 0.9rem;
+	text-align: right;
+}
 
 
 

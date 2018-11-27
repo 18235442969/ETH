@@ -14,6 +14,34 @@ const getPriceSet  = () => {
 	return service.post('/getpriceSet', data);
 }
 
+/**
+ * [投入ETH]
+ * @param  {[String]} options.amt [数量]
+ * @param  {[String]} options.pin [交易密码]
+ */
+const setInvest = ({amt, pin}) => {
+	const data = {
+		amt,
+		pin
+	};
+	return service.post('/setinvest', data);
+}
+
+/**
+ * [获取投资列表]
+ * @param  {[type]} options.pi [页数]
+ * @param  {[type]} options.ps [数量]
+ */
+const getInvestSet = ({pi, ps=20}) => {
+	const data = {
+		pi,
+		ps
+	};
+	return service.post('/getinvestset', data);
+}
+
 export {
-	getPriceSet
+	getPriceSet,
+	setInvest,
+	getInvestSet
 }

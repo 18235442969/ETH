@@ -278,4 +278,169 @@
 		font-size: 0.9rem;
 	}
 }
+//========PutIn.vue==================
+.navbar{
+  width: 100%;
+  height: 45px;
+  line-height: 45px;
+  border-radius: 0px !important;
+  background-color: #fff;
+  border-bottom: 0.8px solid #ebebeb;
+}
+.left, .center, .right{
+  color: #282525;
+}
+
+.center{
+  text-align: center;
+  font-size: 1rem;
+}
+
+.left{
+  padding-left: 10px;
+  font-size: 1.2rem;
+}
+
+.right{
+  padding-right: 10px;
+  text-align: right;
+  font-size: 1rem;
+}
+.putin{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-color: #f5f4f7;
+	overflow-y: auto;
+	color: #000;
+}
+.balabce, .number, .password{
+	background-color: #fff;
+	padding: 5px 0;
+	.title{
+		font-size: 0.8rem;
+		text-align: center;
+	}
+}
+.balabce, .password{
+	margin-top: 10px;
+	border-bottom: 1px solid #ecedef;
+}
+.putIn-button{
+	width: 75%;
+	margin-top: 2.5rem;
+	margin-left: 12.5%;
+	height: 3rem;
+}
+//=============Putout.vue==============
+.putout{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-color: #f5f4f7;
+	overflow-y: auto;
+	color: #000;
+}
+//============Topup.vue=======
+.topup-title{
+	margin-top: 1.5rem;
+	text-align: center;
+	font-size: 0.9rem;
+}
+.topup-address{
+	margin-top: 0.9rem;
+	text-align: center;
+	font-size: 0.9rem;
+}
+.topup-button{
+	margin-top: 1.2rem;
+	text-align: center;
+	button{
+		width: 6rem;
+		height: 1.8rem;
+		font-size: 0.85rem;
+		border: 1px solid #f5bfa6;
+		background-color: #fff;
+		color: #ee8500;
+		border-radius: 30px;
+	}
+}
+//=======Withdrawal.vue==========
+.withdrawal-list{
+	padding: 5px 0;
+	border-bottom: 1px solid #ecedee;
+}
+.withdrawal-title{
+	font-size: 0.85rem;
+	padding-left: 15px;
+}
+.withdrawal-remark{
+	padding-left: 10px;
+}
+.withdrawal-btn{
+	width: 75%;
+	margin-top: 3rem;
+	margin-left: 12.5%;
+	height: 3rem;
+}
+//=============PlatformAnnouncement.vue============
+.platformAnnouncement{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	overflow-y: auto;
+}
+.platformAnnouncement-list{
+	margin: 10px 0;
+	padding: 0 15px;
+	background-color: #fff;
+}
+.platformAnnouncement-title{
+	padding-top: 10px;
+	font-size: 0.9rem;
+}
+.platformAnnouncement-name{
+	white-space: nowrap;
+ 	overflow: hidden;
+ 	text-overflow: ellipsis;
+}
+.platformAnnouncement-time{
+	text-align: right;
+	font-size: 0.7rem;
+	color: #959697;
+}
+.platformAnnouncement-content{
+	padding: 5px 0;
+	font-size: 0.75rem;
+	color: #959697;
+	border-bottom: 1px solid #f5f6f7;
+}
+.platformAnnouncement-more{
+	padding: 8px 0;
+	color: #959697;
+	font-size: 0.8rem;
+	.icon-size{
+		font-size: 0.8rem;
+	}
+}
+.platformAnnouncement-more-icon{
+	text-align: right;
+}
+.pop-title{
+	margin-top: 10px;
+	text-align: center;
+	font-size: 0.95rem;
+}
+.pop-time{
+	text-align: right;
+	padding: 5px 15px;
+	font-size: 0.75rem;
+	color: #959697;
+}
+.pop-content{
+	padding: 0 15px;
+	font-size: 0.85rem;
+	color: #545455;
+}
+
 

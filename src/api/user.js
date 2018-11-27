@@ -50,11 +50,30 @@ const regist  = ({ cc, mob, pw, pmob, code }) => {
 }
 
 /**
+ * [获取用户个人信息]
+ * @param  {[type]} options.uid [用户id]
+ */
+const getUserInfo = ({uid}) => {
+	const data = {
+		uid
+	};
+	return service.post('/getuserinfo', data);
+}
+
+/**
  * [获取个人资产]
  */
 const getBalance  = () => {
 	const data = {};
 	return service.post('/getbalance', data);
+}
+
+/**
+ * [获取平台公告]
+ */
+const getNotice  = () => {
+	const data = {};
+	return service.post('/getnotice', data);
 }
 
 /**
@@ -76,10 +95,76 @@ const setUsertInfo  = ({ alipay='', wechat='', bank='', card='', acc=''}) => {
 	return service.post('/setusertinfo', data);
 }
 
+/**
+ * [设置交易密码]
+ * @param  {[String]} options.pin  [交易密码]
+ * @param  {[String]} options.mob  [账号]
+ * @param  {[String]} options.code [验证码]
+ */
+const setPin = ({pin, mob, code}) => {
+	const data = {
+		pin,
+		mob,
+		code
+	};
+	return service.post('/setpin', data);
+}
+
+/**
+ * [获取我的推荐]
+ * @param  {[type]} options.userId [用户id]
+ * @param  {[type]} options.pi     [页码]
+ * @param  {[type]} options.ps     [页数]
+ */
+const getUserChilds = ({userid, pi=1, ps=20}) => {
+	const data = {
+		userid,
+		pi,
+		ps
+	};
+	return service.post('/getuserchilds', data);
+}
+
+/**
+ * [获取我的推荐]
+ * @param  {[type]} options.pi     [页码]
+ * @param  {[type]} options.ps     [页数]
+ */
+const getFamily = ({pi=1, ps=20}) => {
+	const data = {
+		pi,
+		ps
+	};
+	return service.post('/getmembers', data);
+}
+
+/**
+ * [获取账单]
+ * @param  {[Number]} options.type [类型]
+ * @param  {Number} options.pi   [页数]
+ * @param  {Number} options.ps   [数量]
+ */
+const getDetail = ({type, pi=1, ps=20}) => {
+	const data = {
+		pi,
+		ps
+	};
+	if (type) {
+		data.type = type;
+	}
+	return service.post('/getdetail', data);
+}
+
 export {
 	login,
 	sendCode,
 	regist,
+	getUserInfo,
 	getBalance,
-	setUsertInfo
+	setUsertInfo,
+	setPin,
+	getUserChilds,
+	getFamily,
+	getNotice,
+	getDetail
 }

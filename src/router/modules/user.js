@@ -10,6 +10,10 @@ import Setting from '@/views/user/Setting.vue'
 import UserInfo from '@/views/user/UserInfo.vue'
 import PayPassword from '@/views/user/PayPassword.vue'
 import PaymentMethods from '@/views/user/PaymentMethods.vue'
+import MyFamily from '@/views/user/MyFamily.vue'
+import MyRecommend from '@/views/user/MyRecommend.vue'
+import Bill from '@/views/user/Bill.vue'
+import PlatformAnnouncement from '@/views/home/PlatformAnnouncement.vue'
 
 
 const userRouter = {
@@ -54,6 +58,38 @@ const userRouter = {
       name: 'paymentMethods',
       meta: {
         title: 'paymentMethodsTitle',
+      }
+    },
+    {
+      path: 'myFamily',
+      component: MyFamily,
+      name: 'myFamily',
+      meta: {
+        title: 'myFamilyTitle',
+      }
+    },
+    {
+      path: 'myRecommend',
+      component: MyRecommend,
+      name: 'myRecommend',
+      meta: {
+        title: 'myRecommendTitle',
+      }
+    },
+    {
+      path: 'platformAnnouncement',
+      component: PlatformAnnouncement,
+      name: 'platformAnnouncement',
+      meta: {
+        title: 'platformAnnouncementTitle',
+      }
+    },
+    {
+      path: 'bill',
+      component: Bill,
+      name: 'bill',
+      meta: {
+        title: 'billTitle',
       }
     }
   ]
