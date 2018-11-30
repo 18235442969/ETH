@@ -15,6 +15,31 @@
     <div style="background-color: #f5f4f7;height: 10px;">
     </div>
     <div>
+      <flexbox :gutter="0" class="withdrawal-list">
+        <flexbox-item :span="3" class="withdrawal-title">
+          {{ $t("home.user.topUp.addressText") }}
+        </flexbox-item>
+        <flexbox-item :span="9">
+          <h-input inputClass="noline" :max="60" v-model="myAddress" :placeholder="$t('home.user.topUp.addressPlaceholderText')"></h-input>
+        </flexbox-item>
+      </flexbox>
+      <flexbox :gutter="0" class="withdrawal-list">
+        <flexbox-item :span="3" class="withdrawal-title">
+          {{ $t("home.user.topUp.numberText") }}
+        </flexbox-item>
+        <flexbox-item :span="9">
+          <h-input inputClass="noline" :max="15" v-model="number" :placeholder="$t('home.user.topUp.numberPlaceholderText')"></h-input>
+        </flexbox-item>
+      </flexbox>
+      <div class="putupBtn">
+        <h-button @click.native="submitTopup">
+          {{ $t("home.user.topUp.btnText") }}
+        </h-button>
+      </div>
+    </div>
+    <div style="background-color: #f5f4f7;height: 10px;" v-if="address.trim() != ''">
+    </div>
+    <div v-if="address.trim() != ''">
       <div class="topup-title">
         {{ $t("home.user.topUp.titleText") }}
       </div>
@@ -32,8 +57,10 @@
 
 <script>
 import { Flexbox, FlexboxItem } from 'vux';
-import { Navbar } from './Navbar.vue'
-import { } from '../../../api/eth.js';
+import { Navbar } from './Navbar.vue';
+import HInput from '../../../components/HInput.vue';
+import HButton from '../../../components/HButton.vue';
+import { cashin } from '../../../api/eth.js';
 
 export default {
   name: 'topup',
@@ -41,10 +68,14 @@ export default {
     Flexbox,
     FlexboxItem,
     Navbar,
+    HInput,
+    HButton
   },
   data() {
     return {
-      address: '123asd12asd1a5s4d15dsf454dsf5'
+      myAddress: '',
+      number: '',
+      address: '',
     }
   },
   computed: {
@@ -62,6 +93,31 @@ export default {
     },
     onError() {
       this.vuxUtils.showWarn(this.$t('home.user.topUp.copyFailText'));
+    },
+    /**
+     * [submitTopup 提交充币]
+     */
+    submitTopup: async function() {
+      try {
+        if (this.valid.isStrEmpty(this.myAddress)) {
+          return this.vuxUtils.showWarn(this.$t('home.user.topUp.addressWarnText'));
+        }
+        if (this.valid.isStrEmpty(this.number)) {
+          return this.vuxUtils.showWarn(this.$t('home.user.topUp.numberWarnText'));
+        }
+        let params = {
+          amt: this.number,
+          acc: this.myAddress
+        };
+        let res = await cashin(params);
+        if (res.data.succeed == 'true') {
+          this.$vux.toast.show(this.$t('home.user.topUp.successText'));
+        } else {
+          return this.vuxUtils.showWarn(this.$t('home.user.topUp.failText'));
+        }
+      } catch(e) {
+        return this.vuxUtils.showWarn(this.$t('home.user.topUp.failText'));
+      }
     }
   },
   mounted() {

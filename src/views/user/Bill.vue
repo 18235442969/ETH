@@ -52,8 +52,8 @@
         <bill-info v-for="(i, index) in freezeList" :key="index" :info="i"></bill-info>
       </div>
       <load-more tip="loading" v-show="allIsMoreLoading || intoIsMoreLoading || rolloutIsMoreLoading || earningsIsMoreLoading || rewardIsMoreLoading || spendingIsMoreLoading || freezeIsMoreLoading"></load-more>
-      <div style="padding: 30px 30px;font-size: 0.8rem;">
-        <divider v-show="isDiverShow">
+      <div style="padding: 30px 30px;font-size: 0.8rem;" v-show="isDiverShow">
+        <divider>
           {{ $t("home.user.bill.noData") }}
         </divider>
       </div>

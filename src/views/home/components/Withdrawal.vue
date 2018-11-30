@@ -39,13 +39,13 @@
           <h-input inputClass="noline" :max="8" v-model="password" :placeholder="$t('home.user.withdrawal.passwordPlaceholderText')"></h-input>
         </flexbox-item>
       </flexbox>
-      <flexbox :gutter="0" class="withdrawal-list">
+      <!-- <flexbox :gutter="0" class="withdrawal-list">
         <flexbox-item :span="12" class="withdrawal-remark">
           <h-input inputClass="noline" :max="20" v-model="remark" :placeholder="$t('home.user.withdrawal.remarkPlaceholderText')"></h-input>
         </flexbox-item>
-      </flexbox>
+      </flexbox> -->
       <div class="withdrawal-btn">
-        <h-button>
+        <h-button @click.native="submitWithdrawal">
           {{ $t("home.user.withdrawal.btnText") }}
         </h-button>
       </div>
@@ -55,10 +55,10 @@
 
 <script>
 import { Flexbox, FlexboxItem } from 'vux';
-import { Navbar } from './Navbar.vue'
-import HInput from '../../../components/HInput.vue'
-import HButton from '../../../components/HButton.vue'
-import { } from '../../../api/eth.js';
+import { Navbar } from './Navbar.vue';
+import HInput from '../../../components/HInput.vue';
+import HButton from '../../../components/HButton.vue';
+import { cashout } from '../../../api/eth.js';
 
 export default {
   name: 'withdrawal',
@@ -82,6 +82,35 @@ export default {
   methods: {
     clickLeft() {
       this.$emit('close');
+    },
+    /**
+     * [submitWithdrawal 提现]
+     */
+    submitWithdrawal: async function() {
+      try {
+        if (this.valid.isStrEmpty(this.address)) {
+          return this.vuxUtils.showWarn(this.$t('home.user.withdrawal.addressWarnText'));
+        }
+        if (this.valid.isStrEmpty(this.number)) {
+          return this.vuxUtils.showWarn(this.$t('home.user.withdrawal.numberWarnText'));
+        }
+        if (this.valid.isStrEmpty(this.password)) {
+          return this.vuxUtils.showWarn(this.$t('home.user.withdrawal.passwordWarnText'));
+        }
+        let params = {
+          amt: this.number,
+          acc: this.address,
+          pin: md5(md5(localStorage.getItem('password')) + md5(this.password))
+        };
+        let res = await cashout(params);
+        if (res.data.success == 'true') {
+          this.$vux.toast.show(this.$t('home.user.withdrawal.successText'));
+        } else {
+          return this.vuxUtils.showWarn(this.$t('home.user.withdrawal.failText'));
+        }
+      } catch(e) {
+        return this.vuxUtils.showWarn(this.$t('home.user.withdrawal.failText'));
+      }
     }
   },
   mounted() {

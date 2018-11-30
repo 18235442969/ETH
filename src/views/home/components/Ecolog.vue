@@ -85,7 +85,7 @@
       </div>
       <div v-transfer-dom>
         <popup v-model="putOutShow" position="right" width="100%" :popup-style="popupOption">
-          <putout  v-on:close="hidePutOut"></putout>
+          <putout  v-on:close="hidePutOut" v-on:getBalance="$emit('getNewBalance')"></putout>
         </popup>
       </div>
     </div>
