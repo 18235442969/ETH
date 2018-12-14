@@ -1,3 +1,4 @@
+import { getService } from '../../../api/user.js';
 import { getPriceSet } from '../../../api/eth.js';
 
 /**
@@ -29,8 +30,30 @@ const getEthPrice = ({state, commit, rootState}) => {
 	});
 }
 
+/**
+ * [改变聊天资料]
+ */
+const changeUserChat = ({state, commit, rootState}, data) => {
+  commit('CHANGEUSERCHAT', data)
+}
+
+/**
+ * [获取客服信息]
+ */
+const getUserService = ({state, commit, rootState}) => {
+	return new Promise((resolve, reject) => {
+		getService().then(res => {
+			resolve(res);
+		}).catch(err => {
+			reject(err);
+		})
+	});
+}
+
 export default {
   changeLanguage,
   changeTabIndex,
-  getEthPrice
+  getEthPrice,
+  changeUserChat,
+  getUserService
 }

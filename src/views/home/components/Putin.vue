@@ -78,6 +78,8 @@ export default {
   },
   methods: {
     clickLeft() {
+      this.number = '';
+      this.password = '';
       this.$emit('close');
     },
     /**
@@ -114,7 +116,9 @@ export default {
           amt: this.number,
           pin: md5(md5(localStorage.getItem('password')) + md5(this.password))
         };
+        this.$vux.loading.show();
         let res = await setInvest(params);
+        this.$vux.loading.hide();
         if (res.data.succeed == 'true') {
           this.$emit('getBalance');
           this.bus.$emit('getInvest');
@@ -125,6 +129,7 @@ export default {
           this.vuxUtils.showWarn(this.$t('home.ecolog.putIn.submitErrorText'));
         }
       } catch(e) {
+        this.$vux.loading.hide();
         this.vuxUtils.showWarn(this.$t('home.ecolog.putIn.submitErrorText'));
       }
     }

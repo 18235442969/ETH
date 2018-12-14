@@ -14,6 +14,7 @@ import MyFamily from '@/views/user/MyFamily.vue'
 import MyRecommend from '@/views/user/MyRecommend.vue'
 import Bill from '@/views/user/Bill.vue'
 import PlatformAnnouncement from '@/views/home/PlatformAnnouncement.vue'
+import Chat from '@/views/home/Chat.vue'
 
 
 const userRouter = {
@@ -90,6 +91,13 @@ const userRouter = {
       name: 'bill',
       meta: {
         title: 'billTitle',
+      }
+    },{
+      path: 'chat',
+      component: Chat,
+      name: 'chat',
+      meta: {
+        title: 'chatTitle',
       }
     }
   ]

@@ -62,7 +62,7 @@
             {{ $t("home.user.platformAnnouncementText") }}
           </div>
         </flexbox-item>
-        <flexbox-item :span="4" class="user-operation-item">
+        <flexbox-item :span="4" class="user-operation-item" @click.native="changeAppPage('chat')">
           <img src="../../../assets/image/customerService.png" class="user-operation-img">
           <div class="user-operation-content">
             {{ $t("home.user.customerServiceText") }}
@@ -89,6 +89,8 @@
 import { Flexbox, FlexboxItem, Popup, TransferDom } from 'vux';
 import Topup from './Topup.vue';
 import Withdrawal from './Withdrawal.vue';
+import { mapActions } from 'vuex';
+const appSpace = 'app';
 
 export default {
   name: 'user',
@@ -109,20 +111,50 @@ export default {
         'z-index': 999
       },
       topUpShow: false,
-      withdrawalShow: false
+      withdrawalShow: false,
+      isClick: false
     }
   },
   computed: {
   },
   methods: {
+    ...mapActions(appSpace, {
+      getUserService: 'getUserService'
+    }),
     /**
      * [changeAppPage 切换页面]
      * @param  {[String]} name [名称]
      */
-    changeAppPage(name) {
-      this.$router.push({
-        name: name
-      })
+    changeAppPage: async function (name) {
+      if (this.isClick) {
+        return;
+      }
+      this.isClick = true;
+      if (name == 'chat') {
+        try {
+          let res = await this.getUserService();
+          this.isClick = false;
+          if (res.data.succeed == 'true') {
+            let data = res.data.data[0];
+            this.$router.push({
+              name: name,
+              params: {
+                name: data.name,
+                userId: data.userid,
+                type: 'service'
+              }
+            })
+          } else {
+          }
+        } catch(e) {
+          this.isClick = false;
+        }
+      } else {
+        this.isClick = false;
+        this.$router.push({
+          name: name
+        })
+      }
     },
     /**
      * [coinBtnClick 点击按钮]

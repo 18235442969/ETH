@@ -158,19 +158,29 @@ export default {
           id: order.id,
           pin: md5(md5(localStorage.getItem('password')) + md5(password))
         };
+        this.$vux.loading.show();
         let res = await unInvest(params);
+        this.$vux.loading.hide();
         if (res.data.succeed == 'true') {
           this.$emit('getBalance');
           this.list.forEach((e, index) => {
             if (e.id == order.id) {
-              this.list[index] = res.data.data;
+              let data = res.data.data;
+              e.expirydate = data.expirydate;
+              e.freeze = data.freeze;
+              e.level = data.level;
+              e.profit = data.profit;
+              e.returnamt = data.returnamt;
+              e.state = data.state;
             }
           })
+
           this.$vux.toast.show(this.$t('home.ecolog.putOut.submitSuccessText'));
         } else {
           this.vuxUtils.showWarn(this.$t("home.ecolog.putOut.passwordErrorText"));
         }
       } catch(e) {
+        this.$vux.loading.hide();
         this.vuxUtils.showWarn(this.$t("home.ecolog.putOut.passwordErrorText"));
       }
     },

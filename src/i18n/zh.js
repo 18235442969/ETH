@@ -9,6 +9,8 @@ const zh = {
 		submitBtn: '提交',
 		codeHasSend: '验证码已发送',
 		codeSendError: '发送失败',
+		messageSendError: '发送失败',
+		imageText: '图片',
 	},
 	appTitle: {
 		changePasswordTitle: '修改登录密码',
@@ -27,6 +29,7 @@ const zh = {
 		myRecommendTitle: '我的推荐',
 		platformAnnouncementTitle: '平台公告',
 		billTitle: '账单中心',
+		chatTitle: '聊天',
 	},
 	login: {
 		usernamePlaceholder: '请输入ID，手机号或邮箱',
@@ -115,6 +118,11 @@ const zh = {
 			announcementText: '平台公告',
 			tradeText: '交易信息',
 			customerServiceText: '在线客服',
+			chat: {
+				chatPlaceholder: '聊天...',
+				enterEmpty: '请输入内容',
+				imageUploadError: '图片上传失败'
+			}
 		},
 		user: {
 			balanceText: '余额',

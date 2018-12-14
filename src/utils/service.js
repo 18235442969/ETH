@@ -94,6 +94,12 @@ service.interceptors.request.use(config => {
   delete config.data.appkey;
 
   let signData = Object.assign(initParams, config.data);
+  if (signData.method === 'upload') {
+    config.headers['appkey'] = 'upload';
+    md5Password = 'upload';
+    config.data.pic = config.data.pic.replace(/\+/g, '%2B');
+    signData.pic = signData.pic.replace(/\+/g, '%2B');
+  }
   let sign = '';
   let signArr = [];
   for (let k in signData) {
@@ -106,9 +112,6 @@ service.interceptors.request.use(config => {
   }
   config.headers['sign'] = md5(sign+md5(md5Password));
 
-  // if (signData.method === 'uploadn') {
-  //   signData.img = signData.img.replace(/\+/g, '%2B');
-  // }
   config.url = '';
   return config;
 }, error => {

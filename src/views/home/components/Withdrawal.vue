@@ -58,6 +58,7 @@ import { Flexbox, FlexboxItem } from 'vux';
 import { Navbar } from './Navbar.vue';
 import HInput from '../../../components/HInput.vue';
 import HButton from '../../../components/HButton.vue';
+import md5 from 'js-md5';
 import { cashout } from '../../../api/eth.js';
 
 export default {
@@ -81,6 +82,9 @@ export default {
   },
   methods: {
     clickLeft() {
+      this.address = '';
+      this.number = '';
+      this.password = '';
       this.$emit('close');
     },
     /**
@@ -99,16 +103,22 @@ export default {
         }
         let params = {
           amt: this.number,
-          acc: this.address,
+          addr: this.address,
           pin: md5(md5(localStorage.getItem('password')) + md5(this.password))
         };
+        this.$vux.loading.show();
         let res = await cashout(params);
-        if (res.data.success == 'true') {
+        this.$vux.loading.hide();
+        if (res.data.succeed == 'true') {
+          this.address = '';
+          this.number = '';
+          this.password = '';
           this.$vux.toast.show(this.$t('home.user.withdrawal.successText'));
         } else {
           return this.vuxUtils.showWarn(this.$t('home.user.withdrawal.failText'));
         }
       } catch(e) {
+        this.$vux.loading.hide();
         return this.vuxUtils.showWarn(this.$t('home.user.withdrawal.failText'));
       }
     }

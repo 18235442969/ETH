@@ -5,7 +5,7 @@
  * @Last Modified time: 2018-09-29 09:58:14
  */
 const formatTime = (time, option) => {
-    time = +time * 1000
+    time = +time
     const d = new Date(time)
     const now = Date.now()
 

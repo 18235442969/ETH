@@ -56,12 +56,12 @@ const unInvest = ({ id, pin }) => {
 /**
  * [充值]
  * @param  {[Number]} options.amt [数量]
- * @param  {[String]} options.acc [地址]
+ * @param  {[String]} options.addr [地址]
  */
-const cashin = ({ amt, acc }) => {
+const cashin = ({ amt, addr }) => {
 	const data = {
 		amt,
-		acc
+		addr
 	};
 	return service.post('/cashin', data);
 }
@@ -69,13 +69,13 @@ const cashin = ({ amt, acc }) => {
 /**
  * [提现]
  * @param  {[Number]} options.amt [数量]
- * @param  {[String]} options.acc [地址]
+ * @param  {[String]} options.addr [地址]
  * @param  {[String]} options.pin [交易密码]
  */
-const cashout = ({ amt, acc, pin }) => {
+const cashout = ({ amt, addr, pin }) => {
 	const data = {
 		amt,
-		acc,
+		addr,
 		pin
 	};
 	return service.post('/cashout', data);

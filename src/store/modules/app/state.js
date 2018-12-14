@@ -4,8 +4,11 @@ let appHomeTabIndex = 0;
 
 let ethPrice = 0;
 
+let userChat = JSON.parse(localStorage.getItem('chatList')) || [];
+
 export default {
   language,
   appHomeTabIndex,
-  ethPrice
+  ethPrice,
+  userChat
 }

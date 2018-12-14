@@ -82,6 +82,8 @@ export default {
   },
   methods: {
     clickLeft() {
+      this.myAddress = '';
+      this.number = '';
       this.$emit('close');
     },
     onCopy() {
@@ -105,17 +107,23 @@ export default {
         if (this.valid.isStrEmpty(this.number)) {
           return this.vuxUtils.showWarn(this.$t('home.user.topUp.numberWarnText'));
         }
+        this.$vux.loading.show();
         let params = {
           amt: this.number,
-          acc: this.myAddress
+          addr: this.myAddress
         };
         let res = await cashin(params);
+        this.$vux.loading.hide();
         if (res.data.succeed == 'true') {
+          this.myAddress = '';
+          this.number = '';
+          this.address = res.data.data.address;
           this.$vux.toast.show(this.$t('home.user.topUp.successText'));
         } else {
           return this.vuxUtils.showWarn(this.$t('home.user.topUp.failText'));
         }
       } catch(e) {
+        this.$vux.loading.hide();
         return this.vuxUtils.showWarn(this.$t('home.user.topUp.failText'));
       }
     }

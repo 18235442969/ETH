@@ -495,5 +495,140 @@
 	font-size: 0.85rem;
 	color: #545455;
 }
-
+//===========================Chat.vue=======================
+.chat{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	overflow: none;
+}
+.chatList{
+	position: absolute;
+	width: 100%;
+	height: calc(100vh - 91px);
+	overflow-y: auto;
+}
+.chat-list-dialog{
+	padding: 0 10px 10px 10px;
+}
+.time-line{
+	margin: 10px 0;
+	text-align: center;
+	height: 1.5rem;
+	line-height: 1.5rem;
+	color: gray;
+	font-size: 0.9rem;
+}
+.chatLeft{
+	width: 100%;
+ 	margin-top: 10px;
+}
+.chatLeft-head{
+	display: inline-block;
+	vertical-align: top;
+ 	padding: 5px 0;
+}
+.chatLeft-content{
+	position: relative;
+	display: inline-block;
+ 	max-width: calc(100vw - 180px);
+ 	margin-left: 10px;
+ 	padding: 5px 5px 5px 5px;
+ 	border: 1px solid #fff;
+ 	background-color: #fff;
+ 	color: #000;
+ 	-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+ 	border-radius: 5px;
+ 	word-break: break-all;
+ 	word-wrap:break-word;
+ 	font-size: 0.9rem;
+ 	&:before{
+ 		position: absolute;
+   	content: "";
+   	width: 0;
+   	height: 0;
+   	right: 100%;
+   	top: 0.5rem;
+   	border-top: 5px solid transparent;
+   	border-right: 10px solid #fff;
+   	border-bottom: 8px solid transparent;
+ 	}
+}
+.chatRight{
+	width: 100%;
+	text-align: right;
+ 	margin-top: 10px;
+}
+.chatRight-head{
+	display: inline-block;
+	vertical-align: top;
+ 	padding: 5px 0;
+}
+.chatRight-content{
+	position: relative;
+	display: inline-block;
+ 	max-width: calc(100vw - 180px);
+ 	// min-height: 2rem;
+ 	// line-height: 2rem;
+ 	margin-right: 10px;
+ 	padding: 5px 5px 5px 5px;
+ 	border: 1px solid #a0e75a;
+ 	background-color: #a0e75a;
+ 	text-align: left;
+ 	color: #000;
+ 	-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+ 	border-radius: 5px;
+ 	word-break: break-all;
+ 	word-wrap:break-word;
+ 	font-size: 0.9rem;
+ 	&:after{
+ 		position: absolute;
+   	content: "";
+   	width: 0;
+   	height: 0;
+   	left: 100%;
+   	top: 0.5rem;
+   	border-top: 5px solid transparent;
+   	border-left: 10px solid #a0e75a;
+   	border-bottom: 8px solid transparent;
+ 	}
+}
+.chatInput{
+	position: fixed;
+	width: 100%;
+	min-height: 3rem;
+	z-index: 999;
+	background-color: #fff;
+	bottom: 0;
+	.chatInput-showInput{
+		height: 3rem;
+		line-height: 3rem;
+		input{
+			display: inline-block;
+			width: 67%;
+			margin-left: 3%;
+			margin-top: 0.5rem;
+			height: 2rem;
+			line-height: 2rem;
+			border: none;
+			border-radius: 5px;
+			background-color: #dfdfdf;
+			padding-left: 10px;
+		}
+		img{
+			margin-left: 12px;
+			height: 2rem;
+			width: 2rem;
+		}
+	}
+	.chatInput-moreOperation{
+		border-top: 1px solid #dfdfdf;
+		img{
+			width: 16%;
+			margin: 15px 0 15px 6%;
+		}
+	}
+}
 

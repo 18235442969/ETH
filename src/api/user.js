@@ -155,6 +155,27 @@ const getDetail = ({type, pi=1, ps=20}) => {
 	return service.post('/getdetail', data);
 }
 
+/**
+ * [获取客服信息]
+ */
+const getService = () => {
+	const data = {};
+	return service.post('/getservice', data);
+}
+
+/**
+ * [上传]
+ * @param  {[String]} options.fn  [名称]
+ * @param  {[String]} options.pic [64字符串]
+ */
+const upload = ({fn, pic}) => {
+	const data = {
+		fn,
+		pic
+	};
+	return service.post('/upload', data);
+}
+
 export {
 	login,
 	sendCode,
@@ -166,5 +187,7 @@ export {
 	getUserChilds,
 	getFamily,
 	getNotice,
-	getDetail
+	getDetail,
+	getService,
+	upload
 }

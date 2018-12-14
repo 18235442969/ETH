@@ -9,6 +9,8 @@ const en = {
 		submitBtn: 'submit',
 		codeHasSend: 'code has send',
 		codeSendError: 'code send error',
+		messageSendError: 'send error',
+		imageText: 'image',
 	},
 	appTitle: {
 		changePasswordTitle: 'changePassword',
@@ -28,6 +30,7 @@ const en = {
 		myRecommendTitle: 'myRecommend',
 		platformAnnouncementTitle: 'platformAnnouncement',
 		billTitle: 'bill',
+		chatTitle: 'chat',
 	},
 	login: {
 		usernamePlaceholder: 'ID/phone/Email',
@@ -119,6 +122,11 @@ const en = {
 			announcementText: 'announcement',
 			tradeText: 'trade',
 			customerServiceText: 'customerService',
+			chat: {
+				chatPlaceholder: 'chatPlaceholder...',
+				enterEmpty: 'enterEmpty',
+				imageUploadError: 'imageUploadError'
+			}
 		},
 		user: {
 			balanceText: 'balance',
