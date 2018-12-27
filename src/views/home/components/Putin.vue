@@ -122,6 +122,7 @@ export default {
         if (res.data.succeed == 'true') {
           this.$emit('getBalance');
           this.bus.$emit('getInvest');
+          this.bus.$emit('changeUserInfo');
           this.number = '';
           this.password = '';
           this.$vux.toast.show(this.$t('home.ecolog.putIn.submitSuccessText'));

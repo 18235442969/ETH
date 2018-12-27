@@ -41,9 +41,12 @@
 				color: #f58723;
 				font-size: 1.1rem;
 			}
-			.activation{
+			.activation, .hasActivation{
 				font-size: 0.9rem;
 				text-align: right;
+			}
+			.hasActivation{
+				color: #7d86bc;
 			}
 		}
 		.finance{
@@ -93,9 +96,17 @@
 				text-align: right;
 			}
 		}
+		.notice{
+			position: absolute;
+			top: 14.75rem;
+			width: 100%;
+			height: 2rem;
+			background-color: #fff;
+			color: #878787;
+		}
 		.operation{
 			position: absolute;
-			top: 15rem;
+			top: 17.6rem;
 			width: 94%;
 			margin-left: 2.5%;
 			color: #282525;
@@ -107,12 +118,12 @@
 	display: inline-block;
 	width: 47%;
 	background-color: #fff;
-	height: 6rem;
+	height: 4.5rem;
 }
 
 .operation-img{
 	text-align: center;
-	line-height: 6rem;
+	line-height: 4.5rem;
 	img{
 		width: 3rem;
 		height: 3rem;
@@ -120,7 +131,29 @@
 }
 
 .operation-content{
-	font-size: 0.9rem;
+	padding-left: 8px;
+	font-size: 0.85rem;
+}
+
+.align-middle{
+	font-size: 0.85rem;
+	line-height: 32px;
+	padding-right: 15px;
+	white-space:nowrap;
+ 	overflow:hidden;
+ 	text-overflow:ellipsis;
+}
+.notice-icon{
+	line-height: 32px;
+	padding-left: 15px;
+}
+
+.notice-content, .notice-icon{
+	height: 32px;
+}
+
+.icon-gonggao1{
+	font-size: 1.2rem;
 }
 //=============================Market.vue===============
 .market{
@@ -140,7 +173,7 @@
 
 .market-item{
 	margin-top: 10px;
-	padding: 15px 0;
+	padding: 10px 0;
 	background-color: #fff;
 	border-bottom: 1px solid #ecedee;
 	font-size: 0.9rem;
@@ -149,8 +182,15 @@
 		text-align: right;
 	}
 	.market-price{
+		text-align: right;
 		font-size: 1rem;
-		text-align: center;
+		padding-right: 15px;
+	}
+	.market-icon{
+		text-align: right;
+		.icon-zhangdiefuzhang, .icon-zhangdiefudie{
+			font-size: 1.3rem;
+		}
 	}
 	.market-time{
 		padding-right: 15px;
@@ -631,4 +671,36 @@
 		}
 	}
 }
+//======================Transfer.vue===============
+.transfer-username, .transfer-number,.transfer-price{
+	padding: 5px 5px;
+	background-color: #fff;
+	border: 1px solid #f5f4f7;
+}
+.transfer-price{
+	font-size: 0.9rem;
+	padding: 5px 5px 5px 10px;
+}
+
+.transfer-btn{
+	margin-top: 2rem;
+	margin-left: 12.5%;
+	width: 75%;
+	height: 3rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

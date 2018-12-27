@@ -44,7 +44,7 @@ export default {
       userChat: state => state.userChat
     }),
     chat() {
-      let chat = this.userChat.find(e => e.userId == this.$route.params.userId);
+      let chat = this.$route.params.userType === 'service' ? this.userChat.find(e => e.userId == 'service') : this.userChat.find(e => e.userId == this.$route.params.userId);
       return chat ? chat : {
         name: this.$route.params.name
       };
@@ -54,14 +54,8 @@ export default {
         if (index == 0) {
           return true;
         }
-        if (index < (chatList.length - 1)) {
-          let time = (Number(chatList[index+1].sendTime) - Number(chat.sendTime))/60000;
-          return time > 5;
-        }
-        if (index == (chatList.length - 1)) {
-          let time = (Number(chat.sendTime) - Number(chatList[index-1].sendTime))/60000;
-          return time > 5;
-        }
+        let time = (Number(chat.sendTime) - Number(chatList[index-1].sendTime))/60000;
+        return time > 5;
       }
     }
   },

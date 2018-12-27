@@ -11,10 +11,14 @@ const config = {
 	os: 'android',
 	server: 'pon',
 	format: 'json',
-	wsUrl: 'ws://webadmin894.eth-fund.com',
-	baseUrl: 'http://webadmin894.eth-fund.com',
-	apiUrl: 'http://webadmin894.eth-fund.com/api.ashx',
-	imgUrl: 'http://webadmin894.eth-fund.com/img.ashx',
+	wsUrl: 'ws://api892398.eth-fund.com',
+	// wsUrl: 'ws://webadmin894.eth-fund.com',
+	baseUrl: 'http://api892398.eth-fund.com',
+	// baseUrl: 'http://webadmin894.eth-fund.com',
+	apiUrl: 'http://api892398.eth-fund.com/api.ashx',
+	// apiUrl: 'http://webadmin894.eth-fund.com/api.ashx',
+	imgUrl: 'http://api892398.eth-fund.com/img.ashx',
+	// imgUrl: 'http://webadmin894.eth-fund.com/img.ashx',
 }
 
 export default config;

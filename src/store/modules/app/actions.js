@@ -23,6 +23,7 @@ const changeTabIndex = ({state, commit, rootState}, index) => {
 const getEthPrice = ({state, commit, rootState}) => {
 	return new Promise((resolve, reject) => {
 		getPriceSet().then(res => {
+			commit('CHANGEPRICE', res.data.data.current);
 			resolve(res);
 		}).catch(err => {
 			reject(err);

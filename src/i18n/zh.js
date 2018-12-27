@@ -11,6 +11,7 @@ const zh = {
 		codeSendError: '发送失败',
 		messageSendError: '发送失败',
 		imageText: '图片',
+		newMessageText: '发送了一条新消息',
 	},
 	appTitle: {
 		changePasswordTitle: '修改登录密码',
@@ -30,6 +31,9 @@ const zh = {
 		platformAnnouncementTitle: '平台公告',
 		billTitle: '账单中心',
 		chatTitle: '聊天',
+		transferTitle: '转账中心',
+		rewardBillTitle: '奖励账单',
+		revenueBillTitle: '收益账单',
 	},
 	login: {
 		usernamePlaceholder: '请输入ID，手机号或邮箱',
@@ -39,6 +43,7 @@ const zh = {
 		resetPasswordText: '忘记密码',
 		usernameWarnText: '账号不能为空',
 		passwordWarnText: '密码不能为空',
+		loginError: '登录失败'
 	},
 	registe: {
 		phoneRegisteText: '手机号注册',
@@ -70,7 +75,8 @@ const zh = {
 		homeTabFour: '我的',
 		getBalanceWarnText: '获取个人资产失败',
 		ecolog: {
-			headRightText: '激活',
+			headRightText: '未激活',
+			hasHeadRightText: '已激活',
 			introduceEth: '在投',
 			putInBtnText: '投入',
 			putOutBtnText: '赎回',
@@ -78,6 +84,9 @@ const zh = {
 			operationTwoText: '初级挂单',
 			operationThreeText: '中级挂单',
 			operationFourText: '高级挂单',
+			rewardBillText: '奖励账单',
+			revenueBillText: '收益账单',
+			inTheVotingRecordText: '在投记录',
 			putIn: {
 				balanceText: '账户余额',
 				putInNumber: '投入数量',
@@ -112,7 +121,12 @@ const zh = {
 				passwordErrorText: '支付密码不可为空',
 				submitSuccessText: '操作成功',
 				submitError: '操作失败',
-			}
+			},
+			transfer: {
+				nowPriceText: '当前价格',
+				usernamePlaceholder: '请输入账号或者ID号',
+				numberPlaceholder: '请输入数量',
+			},
 		},
 		mail: {
 			announcementText: '平台公告',
@@ -164,6 +178,7 @@ const zh = {
 				bankPlaceholder: '请输入开户行',
 				cardnoPlaceholder: '请输入银行卡卡号',
 				namePlaceholder: '请输入持卡人姓名',
+				phonePlaceholder: '请输入银行卡预留手机号',
 				alipayText: '支付宝',
 				wechatText: '微信',
 				tipsOneText: '请绑定持卡人本人的银行卡',
@@ -171,6 +186,7 @@ const zh = {
 				bankText: '开户行',
 				cardnoText: '银行卡号',
 				nameText: '持卡人',
+				phoneText: '手机号',
 				cardnoWarnText: '请完善您的银行卡信息',
 				accountWarnText: '请至少设置一个账号',
 				settingWarnText: '设置失败',
@@ -181,6 +197,10 @@ const zh = {
 				changePasswordPasswordPlaceholder: '请输入密码',
 				changePasswordCodeText: '获取验证码',
 				usernameWarnText: '请输入手机号或邮箱',
+				codeWarnText: '请输入验证码',
+				passwordWarnText: '请输入密码',
+				setError: '设置失败',
+				setSuccess: '设置成功',
 			},
 			payPassword: {
 				payPasswordUsernamePlaceholder: '请输入手机号或邮箱',

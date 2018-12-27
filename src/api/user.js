@@ -50,6 +50,23 @@ const regist  = ({ cc, mob, pw, pmob, code }) => {
 }
 
 /**
+ * [修改登录密码]
+ * @param  {[String]} options.cc  [国家区号]
+ * @param  {[String]} options.mob  [账号]
+ * @param  {[String]} options.pw   [密码]
+ * @param  {[String]} options.code [验证码]
+ */
+const resetPw = ({cc, mob, pw, code }) => {
+	const data = {
+		cc,
+		mob,
+		pw,
+		code
+	};
+	return service.post('/resetpw', data);
+}
+
+/**
  * [获取用户个人信息]
  * @param  {[type]} options.uid [用户id]
  */
@@ -83,14 +100,16 @@ const getNotice  = () => {
  * @param  {[String]} options.bank   [开户行]
  * @param  {[String]} options.card   [银行卡号]
  * @param  {[String]} options.acc    [姓名]
+ * @param  {[String]} options.mob    [银行卡预留手机号]
  */
-const setUsertInfo  = ({ alipay='', wechat='', bank='', card='', acc=''}) => {
+const setUsertInfo  = ({ alipay='', wechat='', bank='', card='', acc='', bankmob=''}) => {
 	const data = {
 		alipay,
 		wechat,
 		bank,
 		card,
-		acc
+		acc,
+		bankmob
 	};
 	return service.post('/setusertinfo', data);
 }
@@ -180,6 +199,7 @@ export {
 	login,
 	sendCode,
 	regist,
+	resetPw,
 	getUserInfo,
 	getBalance,
 	setUsertInfo,

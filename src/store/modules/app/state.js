@@ -2,13 +2,13 @@ let language = localStorage.getItem('locale') ? localStorage.getItem('locale') :
 
 let appHomeTabIndex = 0;
 
-let ethPrice = 0;
+let coinPrice = [];
 
 let userChat = JSON.parse(localStorage.getItem('chatList')) || [];
 
 export default {
   language,
   appHomeTabIndex,
-  ethPrice,
+  coinPrice,
   userChat
 }

@@ -149,6 +149,10 @@ export default {
           {
             key: 'reseiveName',
             value: this.$route.params.name
+          },
+          {
+            key: 'userType',
+            value: this.$route.params.userType
           }
         ]
       }

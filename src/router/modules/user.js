@@ -15,6 +15,9 @@ import MyRecommend from '@/views/user/MyRecommend.vue'
 import Bill from '@/views/user/Bill.vue'
 import PlatformAnnouncement from '@/views/home/PlatformAnnouncement.vue'
 import Chat from '@/views/home/Chat.vue'
+import Transfer from '@/views/home/Transfer.vue'
+import RevenueBill from '@/views/home/RevenueBill.vue'
+import RewardBill from '@/views/home/RewardBill.vue'
 
 
 const userRouter = {
@@ -98,6 +101,27 @@ const userRouter = {
       name: 'chat',
       meta: {
         title: 'chatTitle',
+      }
+    },{
+      path: 'transfer',
+      component: Transfer,
+      name: 'transfer',
+      meta: {
+        title: 'transferTitle',
+      }
+    },{
+      path: 'revenueBill',
+      component: RevenueBill,
+      name: 'revenueBill',
+      meta: {
+        title: 'revenueBillTitle',
+      }
+    },{
+      path: 'rewardBill',
+      component: RewardBill,
+      name: 'rewardBill',
+      meta: {
+        title: 'rewardBillTitle',
       }
     }
   ]

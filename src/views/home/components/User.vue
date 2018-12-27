@@ -141,7 +141,8 @@ export default {
               params: {
                 name: data.name,
                 userId: data.userid,
-                type: 'service'
+                type: 'service',
+                userType: 'service'
               }
             })
           } else {

@@ -100,6 +100,10 @@ service.interceptors.request.use(config => {
     config.data.pic = config.data.pic.replace(/\+/g, '%2B');
     signData.pic = signData.pic.replace(/\+/g, '%2B');
   }
+  if (signData.method === 'resetpw') {
+    config.headers['appkey'] = config.url.substring(1);
+    md5Password = config.url.substring(1);
+  }
   let sign = '';
   let signArr = [];
   for (let k in signData) {

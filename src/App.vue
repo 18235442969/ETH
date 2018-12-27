@@ -70,12 +70,13 @@ export default {
       let chatList = localStorage.getItem('chatList') ? JSON.parse(localStorage.getItem('chatList')) : [];
       //接受的用户聊天列表
       let userChat;
-      let chat = chatList.find(e => e.userId === data.sender);
+      let userType = data.pairs.find(e => e.key == 'userType').value;
+      let chat = userType === 'service' ? chatList.find(e => e.userId === 'service') : chatList.find(e => e.userId === data.sender);
       if (chat) {
         userChat = chat;
       } else {
         userChat = {
-          userId: data.sender,
+          userId: userType === 'service' ? 'service' : data.sender,
           unRead: 0,
           name: data.pairs.find(e => e.key == 'sendName').value,
           newContent: '',
@@ -103,11 +104,17 @@ export default {
       userChat.list.chat.push(message);
       if (this.$route.path !== '/user/chat') {
         userChat.unRead++;
+        if ( window.plus ) {
+          plus.push.createMessage(message.message, 'text', {
+            title: data.pairs.find(e => e.key == 'sendName').value + this.$t('base.newMessageText')
+          });
+        }
         this.$vux.toast.show({
-          text: '收到一条新消息',
-          time: 1000,
+          text: data.pairs.find(e => e.key == 'sendName').value + this.$t('base.newMessageText'),
+          time: 1500,
           position: 'top',
-          type: 'text'
+          type: 'text',
+          width: '80%'
         });
       }
       userChat.time = new Date(data.sendtime).getTime();
@@ -132,12 +139,13 @@ export default {
         this.ws.send(JSON.stringify(data.messageData));
         let chatList = localStorage.getItem('chatList') ? JSON.parse(localStorage.getItem('chatList')) : [];
         let userChat;
-        let chat = chatList.find(e => e.userId === data.messageData.receiver);
+        let userType = data.messageData.pairs.find(e => e.key == 'userType').value;
+        let chat = userType === 'service' ? chatList.find(e => e.userId === 'service') : chatList.find(e => e.userId === data.messageData.receiver);
         if (chat) {
           userChat = chat;
         } else {
           userChat = {
-            userId: data.messageData.receiver,
+            userId: userType === 'service' ? 'service' : data.messageData.receiver,
             unRead: 0,
             name: data.messageData.pairs.find(e => e.key == 'reseiveName').value,
             newContent: '',

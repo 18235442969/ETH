@@ -103,7 +103,7 @@ export default {
       } catch(e) {
         this.vuxUtils.showWarn(this.$t('home.user.platformAnnouncement.errorText'));
       }
-    }
+    },
   },
   filters: {
     contentFilter(value) {

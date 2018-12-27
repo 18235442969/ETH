@@ -11,6 +11,7 @@ const en = {
 		codeSendError: 'code send error',
 		messageSendError: 'send error',
 		imageText: 'image',
+		newMessageText: '发送了一条新消息',
 	},
 	appTitle: {
 		changePasswordTitle: 'changePassword',
@@ -31,6 +32,9 @@ const en = {
 		platformAnnouncementTitle: 'platformAnnouncement',
 		billTitle: 'bill',
 		chatTitle: 'chat',
+		transferTitle: 'transfer',
+		rewardBillTitle: 'rewardBill',
+		revenueBillTitle: 'revenueBill',
 	},
 	login: {
 		usernamePlaceholder: 'ID/phone/Email',
@@ -40,6 +44,7 @@ const en = {
 		resetPasswordText: 'resetPassword',
 		usernameWarnText: 'username is null',
 		passwordWarnText: 'password is null',
+		loginError: 'loginError'
 	},
 	registe: {
 		phoneRegisteText: 'phoneRegiste',
@@ -74,7 +79,8 @@ const en = {
 		homeTabFour: 'user',
 		getBalanceWarnText: 'get balance error',
 		ecolog: {
-			headRightText: 'jihuo',
+			headRightText: 'headRightText',
+			hasHeadRightText: 'hasHeadRightText',
 			introduceEth: 'zaitou',
 			putInBtnText: 'putIn',
 			putOutBtnText: 'putOut',
@@ -82,6 +88,9 @@ const en = {
 			operationTwoText: 'lowerLevel',
 			operationThreeText: 'middleLevel',
 			operationFourText: 'highLevel',
+			rewardBillText: 'rewardBillText',
+			revenueBillText: 'revenueBillText',
+			inTheVotingRecordText: 'inTheVotingRecordText',
 			putIn: {
 				balanceText: 'balanceText',
 				putInNumber: 'putInNumber',
@@ -116,6 +125,11 @@ const en = {
 				passwordErrorText: 'passwordErrorText',
 				submitSuccessText: 'submitSuccessText',
 				submitError: 'submitError',
+			},
+			transfer: {
+				nowPriceText: '当前价格',
+				usernamePlaceholder: '请输入账号或者ID号',
+				numberPlaceholder: '请输入数量',
 			}
 		},
 		mail: {
@@ -168,6 +182,7 @@ const en = {
 				bankPlaceholder: 'bankPlaceholder',
 				cardnoPlaceholder: 'cardnoPlaceholder',
 				namePlaceholder: 'namePlaceholder',
+				phonePlaceholder: 'phonePlaceholder',
 				alipayText: 'alipayText',
 				wechatText: 'wechatText',
 				tipsOneText: 'tipsOneText',
@@ -175,6 +190,7 @@ const en = {
 				bankText: 'bankText',
 				cardnoText: 'cardnoText',
 				nameText: 'nameText',
+				phoneText: 'phoneText',
 				cardnoWarnText: 'cardnoWarnText',
 				accountWarnText: 'accountWarnText',
 				settingWarnText: 'settingWarnText',
@@ -185,6 +201,10 @@ const en = {
 				changePasswordPasswordPlaceholder: 'password',
 				changePasswordCodeText: 'getReferrer',
 				usernameWarnText: 'place enter phone or email',
+				codeWarnText: 'codeWarnText',
+				passwordWarnText: 'passwordWarnText',
+				setError: 'setError',
+				setSuccess: 'setSuccess',
 			},
 			payPassword: {
 				payPasswordUsernamePlaceholder: 'place enter phone or email',

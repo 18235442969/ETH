@@ -280,11 +280,11 @@ export default {
           this.$vux.toast.show(this.$t('registe.registeSuccess'));
           this.$router.goAppBack();
         } else {
-          this.$vux.toast.show(this.$t('registe.registeFail'));
+          this.vuxUtils.showWarn(this.$t('registe.registeFail'));
         }
       } catch(e) {
         this.$vux.loading.hide();
-        this.$vux.toast.show(this.$t('registe.registeFail'));
+        this.vuxUtils.showWarn(this.$t('registe.registeFail'));
       }
     }
   },

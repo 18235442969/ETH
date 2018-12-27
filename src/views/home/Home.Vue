@@ -49,6 +49,9 @@ export default {
     Tabbar,
     TabbarItem,
   },
+  beforeDestroy () {
+    this.bus.$off('changeUserInfo');
+  },
   data() {
     return {
       footIndex: 0,
@@ -101,7 +104,7 @@ export default {
         });
         if (res.data.succeed == 'true') {
           let user = Object.assign(userInfo, res.data.data);
-        } else {
+          auth.setUserInfo(JSON.stringify(user));
         }
       } catch(e) {
       }
@@ -123,6 +126,9 @@ export default {
     this.getBalance();
     this.getAllEthPrice();
     this.getUserInfo();
+    this.bus.$on('changeUserInfo', () => {
+      this.getUserInfo();
+    });
   },
   created() {
     this.footIndex = this.appHomeTabIndex;

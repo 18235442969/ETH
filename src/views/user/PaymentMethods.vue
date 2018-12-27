@@ -44,6 +44,14 @@
           <h-input type="text" :max="10" inputClass="noline" v-model="name" :placeholder="$t('home.user.paymentMethods.namePlaceholder')" :readonly="isSetCardno"></h-input>
         </flexbox-item>
       </flexbox>
+      <flexbox :gutter="0" class="phone">
+        <flexbox-item :span="3" class="title">
+          {{ $t("home.user.paymentMethods.phoneText") }}
+        </flexbox-item>
+        <flexbox-item :span="9">
+          <h-input type="text" :max="15" inputClass="noline" v-model="phone" :placeholder="$t('home.user.paymentMethods.phonePlaceholder')" :readonly="isSetCardno"></h-input>
+        </flexbox-item>
+      </flexbox>
       <div class="tips">
         ●{{ $t("home.user.paymentMethods.tipsTwoText") }}
       </div>
@@ -76,6 +84,7 @@ export default {
       bank: '',
       cardno: '',
       name: '',
+      phone: '',
       isSetWechat: false,
       isSetAlipay: false,
       isSetCardno: false,
@@ -117,14 +126,16 @@ export default {
           arr.push(this.bank);
           arr.push(this.cardno);
           arr.push(this.name);
+          arr.push(this.phone);
           let emptyArr = arr.filter(e => e.trim() != '');
           if (emptyArr.length > 0 && emptyArr.length < 3) {
             return this.vuxUtils.showWarn(this.$t('home.user.paymentMethods.cardnoWarnText'))
           }
-          if (emptyArr.length == 3) {
+          if (emptyArr.length == 4) {
             params.bank = this.bank;
             params.card = this.cardno;
             params.acc = this.name;
+            params.bankmob = this.phone;
           }
         }
         if (!this.isSetWechat && !this.valid.isStrEmpty(this.wechat)) {
@@ -153,11 +164,13 @@ export default {
               userInfo.bank = data.bank;
               userInfo.cardno = data.cardno;
               userInfo.account = data.account;
+              userInfo.bankmob = data.bankmob;
             }
           }
           auth.setUserInfo(JSON.stringify(userInfo));
         } else {
-          console.log(res.data)
+          this.$vux.loading.hide();
+          this.vuxUtils.showWarn(this.$t('home.user.paymentMethods.settingWarnText'));
         }
       } catch(e) {
         this.$vux.loading.hide();
@@ -176,10 +189,11 @@ export default {
         this.alipay = userInfo.alipay;
         this.isSetAlipay = true;
       }
-      if (userInfo.cardno) {
-        this.bank = userInfo.bank;
-        this.cardno = userInfo.cardno;
-        this.name = userInfo.account;
+      this.bank = userInfo.bank ? userInfo.bank : '';
+      this.cardno = userInfo.cardno ? userInfo.cardno : '';
+      this.name = userInfo.account ? userInfo.account : '';
+      this.phone = userInfo.bankmob ? userInfo.bankmob : '';
+      if (userInfo.bank && userInfo.cardno && userInfo.account && userInfo.bankmob) {
         this.isSetCardno = true;
       }
     }

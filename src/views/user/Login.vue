@@ -63,8 +63,8 @@ export default {
     return {
       languageShow: false,
       isLogin: false,
-      username: '18235442969',
-      password: '123456'
+      username: '',
+      password: ''
     }
   },
   computed: {
@@ -86,16 +86,20 @@ export default {
         this.$vux.loading.hide();
         if (res.data.succeed == 'true') {
           localStorage.setItem('password', this.password);
+          if (localStorage.getItem('lastUsername') != res.data.data.userid) {
+            localStorage.removeItem('chatList');
+          }
+          localStorage.setItem('lastUsername', res.data.data.userid);
           auth.setUserInfo(JSON.stringify(res.data.data));
           this.$router.push({
             path: '/'
           });
         } else {
-          console.log(res.data)
+          this.vuxUtils.showWarn(this.$t('login.loginError'));
         }
       } catch(e) {
         this.$vux.loading.hide();
-        console.log(e);
+        this.vuxUtils.showWarn(this.$t('login.loginError'));
       }
     },
     changeLanguage() {
