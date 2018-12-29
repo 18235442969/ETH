@@ -1,7 +1,7 @@
 <template>
   <div class="chatInput">
     <div class="chatInput-showInput">
-      <input type="text" :placeholder="$t('home.mail.chat.chatPlaceholder')" ref="content" v-model="chatContent" v-on:focus="onFocus"/>
+      <input type="text" :placeholder="$t('home.mail.chat.chatPlaceholder')" ref="content" v-model="chatContent" v-on:focus="onFocus" @keyup.enter="sendMessage"/>
       <img src="../../../assets/image/chatSend.png" @click="sendMessage">
       <img src="../../../assets/image/chatMore.png" @click='more'>
     </div>
@@ -166,9 +166,7 @@ export default {
         messageData: params,
       });
       this.chatContent = '';
-    }
-  },
-  mounted() {
+    },
   }
 }
 </script>

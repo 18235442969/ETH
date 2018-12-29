@@ -4,25 +4,32 @@
     </div>
     <div class="bill-tab">
       <flexbox :gutter="0">
-        <flexbox-item class="tab-item" :class="{choose: tabIndex == 333}" @click.native="changeTab(333)">
+        <flexbox-item class="tab-item" :span="1.9" :class="{choose: tabIndex == 333}" @click.native="changeTab(333)">
           {{ $t("home.user.bill.allText") }}
         </flexbox-item>
-        <flexbox-item class="tab-item" :class="{choose: tabIndex == 1}" @click.native="changeTab(1)">
+        <flexbox-item class="tab-item" :span="1.9" :class="{choose: tabIndex == 1}" @click.native="changeTab(1)">
           {{ $t("home.user.bill.topupText") }}
         </flexbox-item>
-        <flexbox-item class="tab-item" :class="{choose: tabIndex == 2}" @click.native="changeTab(2)">
+        <flexbox-item class="tab-item" :span="1.9" :class="{choose: tabIndex == 2}" @click.native="changeTab(2)">
           {{ $t("home.user.bill.withdrawalText") }}
         </flexbox-item>
-        <flexbox-item class="tab-item" :class="{choose: tabIndex == 3}" @click.native="changeTab(3)">
+        <flexbox-item class="tab-item" :span="1.9" :class="{choose: tabIndex == 10}" @click.native="changeTab(10)">
+          {{ $t("home.user.bill.transferIn") }}
+        </flexbox-item>
+        <flexbox-item class="tab-item" :span="1.9" :class="{choose: tabIndex == 11}" @click.native="changeTab(11)">
+          {{ $t("home.user.bill.transferOut") }}
+        </flexbox-item>
+        <flexbox-item class="tab-item" :span="1.9" :class="{choose: tabIndex == 3}" @click.native="changeTab(3)">
           {{ $t("home.user.bill.earningsText") }}
         </flexbox-item>
-        <flexbox-item class="tab-item" :class="{choose: tabIndex == 4}" @click.native="changeTab(4)">
+
+        <flexbox-item class="tab-item" :span="1.9" :class="{choose: tabIndex == 4}" @click.native="changeTab(4)">
           {{ $t("home.user.bill.rewardText") }}
         </flexbox-item>
-        <flexbox-item class="tab-item" :class="{choose: tabIndex == 8}" @click.native="changeTab(8)">
+        <flexbox-item class="tab-item" :span="1.9" :class="{choose: tabIndex == 8}" @click.native="changeTab(8)">
           {{ $t("home.user.bill.investmentText") }}
         </flexbox-item>
-        <flexbox-item class="tab-item" :class="{choose: tabIndex == 5}" @click.native="changeTab(5)">
+        <flexbox-item class="tab-item" :span="1.9" :class="{choose: tabIndex == 5}" @click.native="changeTab(5)">
           {{ $t("home.user.bill.freezeText") }}
         </flexbox-item>
       </flexbox>
@@ -39,6 +46,12 @@
       <div v-show="tabIndex == 2">
         <bill-info v-for="(i, index) in rolloutList" :key="index" :info="i"></bill-info>
       </div>
+      <div v-show="tabIndex == 10">
+        <bill-info v-for="(i, index) in transferInList" :key="index" :info="i"></bill-info>
+      </div>
+      <div v-show="tabIndex == 11">
+        <bill-info v-for="(i, index) in transferOutList" :key="index" :info="i"></bill-info>
+      </div>
       <div v-show="tabIndex == 3">
         <bill-info v-for="(i, index) in earningsList" :key="index" :info="i"></bill-info>
       </div>
@@ -51,7 +64,7 @@
       <div v-show="tabIndex == 5">
         <bill-info v-for="(i, index) in freezeList" :key="index" :info="i"></bill-info>
       </div>
-      <load-more tip="loading" v-show="allIsMoreLoading || intoIsMoreLoading || rolloutIsMoreLoading || earningsIsMoreLoading || rewardIsMoreLoading || spendingIsMoreLoading || freezeIsMoreLoading"></load-more>
+      <load-more tip="loading" v-show="allIsMoreLoading || intoIsMoreLoading || rolloutIsMoreLoading || earningsIsMoreLoading || rewardIsMoreLoading || spendingIsMoreLoading || freezeIsMoreLoading || transferInIsMoreLoading || transferOutIsMoreLoading"></load-more>
       <div style="padding: 30px 30px;font-size: 0.8rem;" v-show="isDiverShow">
         <divider>
           {{ $t("home.user.bill.noData") }}
@@ -98,6 +111,12 @@ export default {
       },{
         value: 'freeze',
         key: 5
+      },{
+        value: 'transferIn',
+        key: 10
+      },{
+        value: 'transferOut',
+        key: 11
       }],
       tabIndex: 333,
       allPageIndex: 1,
@@ -107,6 +126,8 @@ export default {
       rewardPageIndex: 1,
       spendingPageIndex: 1,
       freezePageIndex: 1,
+      transferInPageIndex: 1,
+      transferOutPageIndex: 1,
       allList: [],
       intoList: [],
       rolloutList: [],
@@ -114,6 +135,8 @@ export default {
       rewardList: [],
       spendingList: [],
       freezeList: [],
+      transferInList: [],
+      transferOutList: [],
       allIsMoreLoading: false,
       intoIsMoreLoading: false,
       rolloutIsMoreLoading: false,
@@ -121,6 +144,8 @@ export default {
       rewardIsMoreLoading: false,
       spendingIsMoreLoading: false,
       freezeIsMoreLoading: false,
+      transferInIsMoreLoading: false,
+      transferOutIsMoreLoading: false,
       allDividerIsShow: false,
       intoDividerIsShow: false,
       rolloutDividerIsShow: false,
@@ -128,6 +153,8 @@ export default {
       rewardDividerIsShow: false,
       spendingDividerIsShow: false,
       freezeDividerIsShow: false,
+      transferInDividerIsShow: false,
+      transferOutDividerIsShow: false,
       allScroll: 0,
       intoScroll: 0,
       rolloutScroll: 0,
@@ -135,6 +162,8 @@ export default {
       rewardScroll: 0,
       spendingScroll: 0,
       freezeScroll: 0,
+      transferInScroll: 0,
+      transferOutScroll: 0,
     }
   },
   computed: {

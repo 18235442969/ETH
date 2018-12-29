@@ -688,11 +688,93 @@
 	width: 75%;
 	height: 3rem;
 }
+//=============RewardBill.vue====RevenueBill.vue========
+.rewardBill, .revenueBill{
+	width: 100%;
+	height: 100%;
+	overflow-y: auto;
+	background-color: #fff;
+}
+//=============Order.vue=================
+.order{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	overflow-y: auto;
+}
+.order-item{
+	margin-top: 10px;
+	padding: 10px;
+	background-color: #fff;
+}
 
+.order-item-id{
+	color: #000;
+	font-size: 0.85rem;
+}
+.order-item-time{
+	text-align: right;
+	font-size: 0.75rem;
+	color: #959697;
+}
+.order-item-content{
+	padding: 10px 0;
+	color: #7e8081;
+	font-size: 0.8rem;
+	.order-item-content-price{
+		color: #4570bd;
+	}
+}
 
+.order-item-chat{
+	text-align: left;
+}
 
+.order-item-commit, .order-item-cancel{
+	text-align: right;
+}
 
+.order-btn{
+	width: 85%;
+	border-radius: 30px;
+	background-color: #fff;
+	color: #fff;
+	font-size: 0.7rem;
+	padding: 3px 0;
+}
+.order-btn-chat{
+	border: 1px solid #ef8e17;
+	color: #ef8e17;
+}
+.order-btn-buy{
+	border: 1px solid #295bcf;
+	color: #295bcf;
+}
+.order-btn-sell{
+	border: 1px solid #295bcf;
+	color: #295bcf;
+}
+.order-btn-pay{
+	border: 1px solid #52b73c;
+	background-color: #52b73c;
+}
+.order-btn-coin{
+	border: 1px solid #52b73c;
+	background-color: #52b73c;
+}
+.order-btn-cancel{
+	border: 1px solid #e91506;
+	background-color: #e91506;
+}
 
+.order-state{
+	font-size: 0.75rem;
+	color: #ef8e17;
+}
+.order-type-transfer{
+	font-size: 0.85rem;
+	color: #000;
+}
 
 
 

@@ -35,6 +35,7 @@ const en = {
 		transferTitle: 'transfer',
 		rewardBillTitle: 'rewardBill',
 		revenueBillTitle: 'revenueBill',
+		orderTitle: 'order',
 	},
 	login: {
 		usernamePlaceholder: 'ID/phone/Email',
@@ -127,9 +128,15 @@ const en = {
 				submitError: 'submitError',
 			},
 			transfer: {
-				nowPriceText: '当前价格',
-				usernamePlaceholder: '请输入账号或者ID号',
-				numberPlaceholder: '请输入数量',
+				nowPriceText: 'nowPriceText',
+				usernamePlaceholder: 'usernamePlaceholder',
+				numberPlaceholder: 'numberPlaceholder',
+				passwordPlaceholder: 'passwordPlaceholder',
+				usernameEmpty: 'usernameEmpty',
+				numberEmpty: 'numberEmpty',
+				passwordEmpty: 'passwordEmpty',
+				successText: 'successText',
+				failText: 'failText'
 			}
 		},
 		mail: {
@@ -140,6 +147,28 @@ const en = {
 				chatPlaceholder: 'chatPlaceholder...',
 				enterEmpty: 'enterEmpty',
 				imageUploadError: 'imageUploadError'
+			},
+			order: {
+				orderIdText: 'orderIdText',
+				transferText: 'transferText',
+				meText: 'meText',
+				sellText: 'sellText',
+				priceText: 'priceText',
+				yuanText: 'yuanText',
+				allPriceText: 'allPriceText',
+				chatText: 'chatText',
+				buyInfoText: 'buyInfoText',
+				sellInfoText: 'sellInfoText',
+				commitPayText: 'commitPayText',
+				commitCoinText: 'commitCoinText',
+				cancelText: 'cancelText',
+				waitBuyText: 'waitBuyText',
+				waitSellText: 'waitSellText',
+				passwordText: 'passwordText',
+				passwordPlaceholderText: 'passwordPlaceholderText',
+				getOrderErrorText: 'getOrderErrorText',
+				setSuccess: 'setSuccess',
+				setFail: 'setFail',
 			}
 		},
 		user: {
@@ -261,6 +290,8 @@ const en = {
 				unfreezeText: 'unfreezeText',
 				investmentText: 'investmentText',
 				withdrawInvestmentText: 'withdrawInvestmentText',
+				transferIn: 'transferIn',
+				transferOut: 'transferOut',
 				otherText: 'otherText',
 				noData: 'noData',
 				errorText: 'errorText',

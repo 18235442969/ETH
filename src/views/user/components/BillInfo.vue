@@ -12,7 +12,7 @@
         </flexbox>
       </flexbox-item>
       <flexbox-item :span="6" class="bill-coin">
-        <span v-if="info.detailtype == 1 || info.detailtype == 3 || info.detailtype == 4 || info.detailtype == 0 || info.detailtype == 7 || info.detailtype == 9">+</span>
+        <span v-if="info.detailtype == 1 || info.detailtype == 3 || info.detailtype == 4 || info.detailtype == 0 || info.detailtype == 7 || info.detailtype == 9 || info.detailtype == 10">+</span>
         <span v-else>-</span>
         {{ info.amount }}
       </flexbox-item>
@@ -66,6 +66,12 @@ export default {
           break;
         case 9:
           return this.$t('home.user.bill.withdrawInvestmentText');
+          break;
+        case 10:
+          return this.$t('home.user.bill.transferIn');
+          break;
+        case 11:
+          return this.$t('home.user.bill.transferOut');
           break;
         default:
           return this.$t('home.user.bill.otherText');

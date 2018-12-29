@@ -81,11 +81,57 @@ const cashout = ({ amt, addr, pin }) => {
 	return service.post('/cashout', data);
 }
 
+/**
+ * [转账]
+ * @param  {[String]} options.amt [数量]
+ * @param  {[String]} options.to  [地址]
+ * @param  {[String]} options.pin [交易密码]
+ */
+const transfer = ({ amt, to, pin }) => {
+	const data = {
+		amt,
+		to,
+		pin
+	};
+	return service.post('/transfer', data);
+}
+
+/**
+ * [获取订单]
+ * @param  {Number} options.ps [页数]
+ * @param  {Number} options.pi [页码]
+ */
+const getOrder = ({ps=20, pi=1}) => {
+	const data = {
+		ps,
+		pi
+	};
+	return service.post('/getorders', data);
+}
+
+/**
+ * [确认取消订单]
+ * @param  {[String]} options.id  [订单id]
+ * @param  {[String]} options.pin [支付密码]
+ * @param  {[Bool]} options.ok  [确认/取消]
+ */
+const setOrder = ({id, pin, ok}) => {
+	const data = {
+		id,
+		pin,
+		ok
+	};
+	return service.post('/setorder', data);
+}
+
 export {
 	getPriceSet,
 	setInvest,
 	getInvestSet,
 	unInvest,
 	cashin,
-	cashout
+	cashout,
+	transfer,
+	getOrder,
+	setOrder
 }

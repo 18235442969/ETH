@@ -12,14 +12,14 @@
           {{ $t("home.mail.announcementText") }}
         </flexbox-item>
       </flexbox>
-      <!-- <flexbox :gutter="0" class="trade-item">
+      <flexbox :gutter="0" class="trade-item" @click.native="changeAppPage('order')">
         <flexbox-item :span="1.5" class="logo">
           <i class="icon iconfont icon-xinxi"></i>
         </flexbox-item>
         <flexbox-item :span="10.5" class="content">
           {{ $t("home.mail.tradeText") }}
         </flexbox-item>
-      </flexbox> -->
+      </flexbox>
     </div>
     <div class="customerService">
       <flexbox :gutter="0" class="customerService-item" @click.native="changeAppPage('chat')">

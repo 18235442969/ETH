@@ -259,7 +259,7 @@ export default {
         } else {
           this.vuxUtils.showWarn(this.$t('home.user.platformAnnouncement.errorText'));
         }
-      } catch(e) {
+      } catch (e) {
         this.vuxUtils.showWarn(this.$t('home.user.platformAnnouncement.errorText'));
       }
     },

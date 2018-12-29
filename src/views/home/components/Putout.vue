@@ -163,6 +163,7 @@ export default {
         this.$vux.loading.hide();
         if (res.data.succeed == 'true') {
           this.$emit('getBalance');
+          this.bus.$emit('changeUserInfo');
           this.list.forEach((e, index) => {
             if (e.id == order.id) {
               let data = res.data.data;

@@ -51,6 +51,7 @@ export default {
   },
   beforeDestroy () {
     this.bus.$off('changeUserInfo');
+    this.bus.$off('changeBalance');
   },
   data() {
     return {
@@ -128,6 +129,9 @@ export default {
     this.getUserInfo();
     this.bus.$on('changeUserInfo', () => {
       this.getUserInfo();
+    });
+    this.bus.$on('changeBalance', () => {
+      this.getBalance();
     });
   },
   created() {

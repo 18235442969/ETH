@@ -18,6 +18,7 @@ import Chat from '@/views/home/Chat.vue'
 import Transfer from '@/views/home/Transfer.vue'
 import RevenueBill from '@/views/home/RevenueBill.vue'
 import RewardBill from '@/views/home/RewardBill.vue'
+import Order from '@/views/home/Order.vue'
 
 
 const userRouter = {
@@ -122,6 +123,14 @@ const userRouter = {
       name: 'rewardBill',
       meta: {
         title: 'rewardBillTitle',
+      }
+    },
+    ,{
+      path: 'order',
+      component: Order,
+      name: 'order',
+      meta: {
+        title: 'orderTitle',
       }
     }
   ]

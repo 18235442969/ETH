@@ -7,6 +7,9 @@
       <flexbox-item :span="12" class="transfer-number">
         <h-input v-model="number" inputClass="noline" type="text" :max="15" :placeholder="$t('home.ecolog.transfer.numberPlaceholder')"></h-input>
       </flexbox-item>
+      <flexbox-item :span="12" class="transfer-number">
+        <h-input v-model="password" inputClass="noline" type="password" :max="8" :placeholder="$t('home.ecolog.transfer.passwordPlaceholder')"></h-input>
+      </flexbox-item>
       <flexbox-item :span="12" class="transfer-price">
         <flexbox>
           <flexbox-item :span="3">
@@ -28,6 +31,7 @@
 import { Flexbox, FlexboxItem } from 'vux';
 import HInput from '../../components/HInput.vue';
 import HButton from '../../components/HButton.vue';
+import { transfer } from '../../api/eth.js';
 import { mapState } from 'vuex';
 const appSpace = "app";
 
@@ -43,6 +47,7 @@ export default {
     return {
       username: '',
       number: '',
+      password: ''
     }
   },
   computed: {
@@ -59,12 +64,40 @@ export default {
     }
   },
   methods: {
-    transfer() {
-      console.log(this.coinPrice)
+    /**
+     * [转账]
+     */
+    transfer: async function() {
+      try {
+        if (this.valid.isStrEmpty(this.username)) {
+          return this.vuxUtils.showWarn(this.$t('home.ecolog.transfer.usernameEmpty'));
+        }
+        if (this.valid.isStrEmpty(this.number)) {
+          return this.vuxUtils.showWarn(this.$t('home.ecolog.transfer.numberEmpty'));
+        }
+        if (this.valid.isStrEmpty(this.password)) {
+          return this.vuxUtils.showWarn(this.$t('home.ecolog.transfer.passwordEmpty'));
+        }
+        this.$vux.loading.show();
+        let res = await transfer({
+          amt: this.number,
+          to: this.username,
+          pin: this.password,
+        });
+        this.$vux.loading.hide();
+        if (res.data.succeed == 'true') {
+          this.$vux.toast.show(this.$t('home.ecolog.transfer.successText'));
+          this.number = '';
+          this.username = '';
+          this.password = '';
+        } else {
+          this.vuxUtils.showWarn(this.$t('home.ecolog.transfer.failText'));
+        }
+      } catch (e) {
+        this.$vux.loading.hide();
+        this.vuxUtils.showWarn(this.$t('home.ecolog.transfer.failText'));
+      }
     }
-  },
-  mounted() {
-
   }
 }
 </script>
