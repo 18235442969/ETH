@@ -106,6 +106,7 @@ export default {
         if (res.data.succeed == 'true') {
           let user = Object.assign(userInfo, res.data.data);
           auth.setUserInfo(JSON.stringify(user));
+          this.bus.$emit('setUserLevel');
         }
       } catch(e) {
       }

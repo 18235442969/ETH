@@ -19,6 +19,15 @@ const login = ({ appkey, md5Password }) => {
 	return service.post('/login', data);
 }
 
+
+/**
+ * [获取配置]
+ */
+const getConfig = () => {
+	const data = {};
+	return service.post('/getconfig', data);
+}
+
 /**
  * [发送验证码]
  * @param  {[type]} options.mob  [手机号]
@@ -209,5 +218,6 @@ export {
 	getNotice,
 	getDetail,
 	getService,
-	upload
+	upload,
+	getConfig
 }

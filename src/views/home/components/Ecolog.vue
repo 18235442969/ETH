@@ -186,6 +186,9 @@ export default {
     Marquee,
     MarqueeItem
   },
+  beforeDestroy () {
+    this.bus.$off('setUserLevel');
+  },
   directives: {
     TransferDom
   },
@@ -279,6 +282,13 @@ export default {
   },
   mounted() {
     this.getNotice();
+    this.bus.$on('setUserLevel', () => {
+      let userInfo =  JSON.parse(auth.getUserInfo());
+      if (userInfo) {
+        this.state = userInfo.state;
+        this.level = userInfo.level;
+      }
+    });
     let userInfo =  JSON.parse(auth.getUserInfo());
     if (userInfo) {
       this.state = userInfo.state;

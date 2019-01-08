@@ -1,5 +1,6 @@
 <template>
   <div class="revenueBill" id="revenueBill">
+    <div style="background-color: #f5f4f7;height: 10px;"></div>
     <bill-info v-for="(i, index) in list" :key="index" :info="i"></bill-info>
     <load-more tip="loading" v-show="isMoreLoading"></load-more>
     <div style="padding: 30px 30px;font-size: 0.8rem;" v-show="list.length == 0">

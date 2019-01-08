@@ -14,9 +14,14 @@ const CHANGEPRICE = (state, data) => {
 	state.coinPrice = data;
 }
 
+const CHANGECONFIG = (state, data) => {
+  state.interestRate = data;
+}
+
 export default {
 	CHANGELANGUAGE,
   CHANGETABINDEX,
   CHANGEUSERCHAT,
-  CHANGEPRICE
+  CHANGEPRICE,
+  CHANGECONFIG
 }

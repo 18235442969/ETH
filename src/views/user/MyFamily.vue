@@ -13,7 +13,7 @@
         <flexbox-item :span="6" class="title-icon">
           <span v-if="rank == 0">0</span>
           <div v-else>
-            <i class="icon iconfont icon-dengji" style="color: #f58723;" v-for="i in rank" :key="i"></i>
+            <i class="icon iconfont icon-dengji" style="color: #f58723;" v-for="i in Number(rank)" :key="i"></i>
           </div>
         </flexbox-item>
         <flexbox-item :span="6" class="title-icon">

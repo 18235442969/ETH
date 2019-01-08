@@ -196,10 +196,30 @@ const isPhone = (phone) => {
     let reg = /^1[1234567890]\d{9}$/;
     return reg.test(phone);
 }
+////////////////////////////////////////////////////////////////////////////////////////////////////
+/**
+ * [判断数字]
+ * @param  {[type]} value [内容]
+ * @param  {[type]} few   [几位小数]
+ */
+const isNumber = (value, few) => {
+    if (typeof value === 'undefined' || value === null || value.trim() === '') {
+        return false;
+    }
+    let numberValue = Number(value);
+    if (isNaN(numberValue)) {
+        return false;
+    }
+    if (few) {
+        return (numberValue+'').split('.')[1] && (numberValue+'').split('.')[1].length > 4 ? false : true;
+    }
+    return true;
+}
 export default {
     idCardValidate,
     checkBankNo,
     isStrEmpty,
     passwordValid,
-    isPhone
+    isPhone,
+    isNumber
 }

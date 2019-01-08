@@ -128,11 +128,15 @@ const zh = {
 				usernamePlaceholder: '请输入账号或者ID号',
 				numberPlaceholder: '请输入数量',
 				passwordPlaceholder: '请输入交易密码',
+				userPricePlaceholder: '请输入单价',
 				usernameEmpty: '账号不可为空',
 				numberEmpty: '数量不可为空',
+				userPriceEmpty: '单价不可为空',
 				passwordEmpty: '交易密码不可为空',
+				userPriceError: '单价格式错误',
 				successText: '成功',
-				failText: '失败'
+				failText: '失败',
+				cashfeeText: '转账手续费为',
 			},
 		},
 		mail: {
@@ -166,6 +170,18 @@ const zh = {
 				getOrderErrorText: '获取订单列表失败',
 				setSuccess: '操作成功',
 				setFail: '操作失败',
+				orderUser: {
+					buyInfoText: '买家信息',
+					sellInfoText: '卖家信息',
+					bank: '开户行',
+					cardno: '账号',
+					account: '开户名',
+					bankmob: '手机号',
+					wechat: '微信',
+					alipay: '支付宝',
+					tips: '请严格按照以上资料进行交易，请勿相信中介！非平台公布资料交易，后果自负！',
+					copytext: '复制'
+				}
 			}
 		},
 		user: {
@@ -183,9 +199,11 @@ const zh = {
 				aboutText: '关于',
 				versionText: '当前版本',
 				exitAppBtnText: '退出登录',
+				cacheBtnText: '清除缓存',
 				exitConfirmContent: '确定要退出吗?',
 				exitConfirmBtnText: '确定',
 				exitCancelBtnText: '取消',
+				catchSuccess: '清除成功'
 			},
 			myFamily: {
 				investmentGradeText: '投资等级',

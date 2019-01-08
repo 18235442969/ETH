@@ -6,9 +6,11 @@ let coinPrice = [];
 
 let userChat = JSON.parse(localStorage.getItem('chatList')) || [];
 
+let interestRate = {};
 export default {
   language,
   appHomeTabIndex,
   coinPrice,
-  userChat
+  userChat,
+  interestRate
 }

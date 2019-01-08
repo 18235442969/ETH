@@ -132,11 +132,15 @@ const en = {
 				usernamePlaceholder: 'usernamePlaceholder',
 				numberPlaceholder: 'numberPlaceholder',
 				passwordPlaceholder: 'passwordPlaceholder',
+				userPricePlaceholder: 'userPricePlaceholder',
 				usernameEmpty: 'usernameEmpty',
 				numberEmpty: 'numberEmpty',
 				passwordEmpty: 'passwordEmpty',
+				userPriceEmpty: 'userPriceEmpty',
+				userPriceError: 'userPriceError',
 				successText: 'successText',
-				failText: 'failText'
+				failText: 'failText',
+				cashfeeText: 'cashfeeText',
 			}
 		},
 		mail: {
@@ -169,6 +173,18 @@ const en = {
 				getOrderErrorText: 'getOrderErrorText',
 				setSuccess: 'setSuccess',
 				setFail: 'setFail',
+				orderUser: {
+					buyInfoText: 'buyInfoText',
+					sellInfoText: 'sellInfoText',
+					bank: 'bank',
+					cardno: 'cardno',
+					account: 'account',
+					bankmob: 'bankmob',
+					wechat: 'wechat',
+					alipay: 'alipay',
+					tips: 'tips',
+					copytext: 'copytext'
+				}
 			}
 		},
 		user: {
@@ -185,10 +201,12 @@ const en = {
 			setting: {
 				aboutText: 'about',
 				versionText: 'version',
+				cacheBtnText: 'cache',
 				exitAppBtnText: 'exit',
 				exitConfirmContent: 'is sure exit?',
 				exitConfirmBtnText: 'confirm',
 				exitCancelBtnText: 'cancel',
+				catchSuccess: 'success'
 			},
 			myFamily: {
 				investmentGradeText: 'investmentGradeText',

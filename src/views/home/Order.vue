@@ -1,7 +1,7 @@
 <template>
   <div class="order" id="order">
-    <ul v-if="list.length > 0">
-      <li class="order-item" v-for="(i, index) in list" :key="index">
+    <ul v-if="orderList.length > 0">
+      <li class="order-item" v-for="(i, index) in orderList" :key="index">
         <flexbox :gutter="0">
           <flexbox-item :span="6" class="order-item-id">
             {{$t("home.mail.order.orderIdText")}}：{{ i.id }}
@@ -31,12 +31,12 @@
             <button class="order-btn order-btn-chat" @click="gotoChat(i)">{{$t("home.mail.order.chatText")}}</button>
           </flexbox-item>
           <flexbox-item :span="3" class="order-item-userInfo">
-            <button class="order-btn order-btn-buy" v-if="i.state == 2 && i.from.userid == userInfo.userid">{{$t("home.mail.order.buyInfoText")}}</button>
-            <button class="order-btn order-btn-sell" v-if="i.state == 0 && i.to.userid == userInfo.userid">{{$t("home.mail.order.sellInfoText")}}</button>
+            <button class="order-btn order-btn-buy" v-if="i.state == 2 && i.from.userid == userInfo.userid" @click="showUserInfo(i, 'buy')">{{$t("home.mail.order.buyInfoText")}}</button>
+            <button class="order-btn order-btn-sell" v-if="i.state == 0 && i.to.userid == userInfo.userid" @click="showUserInfo(i, 'sell')">{{$t("home.mail.order.sellInfoText")}}</button>
           </flexbox-item>
           <flexbox-item :span="3" class="order-item-commit">
-            <button class="order-btn order-btn-pay" v-if="i.state == 0 && i.to.userid == userInfo.userid">{{$t("home.mail.order.commitPayText")}}</button>
-            <button class="order-btn order-btn-coin" v-if="i.state == 2 && i.from.userid == userInfo.userid">{{$t("home.mail.order.commitCoinText")}}</button>
+            <button class="order-btn order-btn-pay" v-if="i.state == 0 && i.to.userid == userInfo.userid" @click="setOrder(i, 'true')">{{$t("home.mail.order.commitPayText")}}</button>
+            <button class="order-btn order-btn-coin" v-if="i.state == 2 && i.from.userid == userInfo.userid" @click="setOrder(i, 'true')">{{$t("home.mail.order.commitCoinText")}}</button>
           </flexbox-item>
           <flexbox-item :span="3" class="order-item-cancel">
             <button class="order-btn order-btn-cancel" v-if="i.state == 0 && i.to.userid == userInfo.userid" @click="setOrder(i, 'false')">{{$t("home.mail.order.cancelText")}}</button>
@@ -46,8 +46,11 @@
         </flexbox>
       </li>
     </ul>
+    <x-dialog v-model="dialogShow" :hide-on-blur="true">
+      <order-user :type="userType" :userInfo="orderUserInfo" v-on:closeDialog="closeDialog"></order-user>
+    </x-dialog>
     <load-more tip="loading" v-show="isMoreLoading"></load-more>
-      <div style="padding: 30px 30px;font-size: 0.8rem;" v-show="list.length == 0">
+      <div style="padding: 30px 30px;font-size: 0.8rem;" v-show="orderList.length == 0">
         <divider>
           {{ $t("home.user.bill.noData") }}
         </divider>
@@ -56,7 +59,8 @@
 </template>
 
 <script>
-import { Flexbox, FlexboxItem, LoadMore, Divider } from 'vux';
+import { Flexbox, FlexboxItem, LoadMore, Divider, XDialog } from 'vux';
+import OrderUser from './components/OrderUser.vue';
 import { getOrder, setOrder } from '../../api/eth.js';
 import auth from '../../utils/auth.js';
 export default {
@@ -65,7 +69,9 @@ export default {
     Flexbox,
     FlexboxItem,
     LoadMore,
-    Divider
+    Divider,
+    XDialog,
+    OrderUser
   },
   data() {
     return {
@@ -73,10 +79,18 @@ export default {
       pageIndex: 1,
       dividerIsShow: false,
       isMoreLoading: false,
+      dialogShow: false,
+      userType: 'buy',
+      orderUserInfo: {
+
+      },
       list: []
     }
   },
   computed: {
+    orderList () {
+      return this.list.filter(e => e.state != '4' && e.state != '3');
+    }
   },
   methods: {
     /**
@@ -89,7 +103,6 @@ export default {
         });
         if (res.data.succeed == 'true') {
           let data = res.data.data;
-          console.log(data)
           if (data.list.length == 0) {
             this.dividerIsShow = true;
           }
@@ -98,6 +111,14 @@ export default {
             this.list = data.list;
           } else {
             this.list = this.list.concat(data.list);
+          }
+          if (localStorage.getItem('chatList').length / 1024 > 1500) {
+            let userIdArr = [];
+            data.list.forEach(i => {
+              i.from.userid != this.userInfo.userid ? userIdArr.push(i.from.userid) : userIdArr.push(i.to.userid);
+            })
+            userIdArr = new Array(...new Set(userIdArr));
+            this.clearChatHistory(userIdArr);
           }
         } else {
           this.vuxUtils.showWarn(this.$t('home.mail.order.getOrderErrorText'));
@@ -121,6 +142,22 @@ export default {
           userType: 'user'
         }
       })
+    },
+    /**
+     * [showUserInfo 查看用户信息]
+     */
+    showUserInfo(data, type) {
+      if (type == 'buy') {
+        this.userType = 'buy';
+        this.orderUserInfo = data.to
+      } else {
+        this.userType = 'sell';
+        this.orderUserInfo = data.from;
+      }
+      this.dialogShow = true;
+    },
+    closeDialog() {
+      this.dialogShow = false;
     },
     /**
      * [setOrder 设置订单]
@@ -155,7 +192,6 @@ export default {
           pin,
           ok
         });
-        console.log(res.data)
         if (res.data.succeed == 'true') {
           this.$vux.toast.show(this.$t('home.mail.order.setSuccess'));
           let data = res.data.data;
@@ -167,6 +203,22 @@ export default {
       } catch(e) {
         return that.vuxUtils.showWarn(this.$t('home.mail.order.setFail'));
       }
+    },
+    /**
+     * [clearChatHistory 删除聊天记录]
+     * @param  {[Array]} data [存在的订单列表]
+     */
+    clearChatHistory(data) {
+      let chatList = JSON.parse(localStorage.getItem('chatList'));
+      chatList.forEach((item, index) => {
+        let chat = data.filter(e => {
+          return item.userId == e;
+        });
+        if (chat.length === 0) {
+          chatList.splice(index, 1);
+        }
+      })
+      localStorage.setItem('chatList', JSON.stringify(chatList))
     },
     /**
      * [initScroll 初始化滚动条加载]
@@ -188,7 +240,6 @@ export default {
     },
   },
   mounted() {
-    console.log(this.userInfo.userid)
     // this.initScroll();
     this.getUserOrder();
   }

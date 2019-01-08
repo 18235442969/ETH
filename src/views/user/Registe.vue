@@ -216,11 +216,11 @@ export default {
           this.phoneCode = res.data.data;
           this.emailCode = res.data.data;
         } else {
-          console.log(res)
+          this.vuxUtils.showWarn(this.$t('base.codeSendError'));
         }
       } catch(e) {
         this.$vux.loading.hide();
-        console.log(e);
+        this.vuxUtils.showWarn(this.$t('base.codeSendError'));
       }
     },
     /**

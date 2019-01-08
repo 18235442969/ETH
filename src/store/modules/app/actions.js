@@ -1,4 +1,4 @@
-import { getService } from '../../../api/user.js';
+import { getService, getConfig } from '../../../api/user.js';
 import { getPriceSet } from '../../../api/eth.js';
 
 /**
@@ -51,10 +51,27 @@ const getUserService = ({state, commit, rootState}) => {
 	});
 }
 
+/**
+ * [获取配置]
+ */
+const getUserConfig = ({state, commit, rootState}) => {
+	return new Promise((resolve, reject) => {
+		getConfig().then(res => {
+			if (res.data.succeed == 'true') {
+				commit('CHANGECONFIG', res.data.data);
+      }
+			resolve(res);
+		}).catch(err => {
+			reject(err);
+		})
+	});
+}
+
 export default {
   changeLanguage,
   changeTabIndex,
   getEthPrice,
   changeUserChat,
-  getUserService
+  getUserService,
+  getUserConfig
 }

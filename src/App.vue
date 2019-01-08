@@ -104,11 +104,11 @@ export default {
       userChat.list.chat.push(message);
       if (this.$route.path !== '/user/chat') {
         userChat.unRead++;
-        if ( window.plus ) {
-          plus.push.createMessage(message.message, 'text', {
-            title: data.pairs.find(e => e.key == 'sendName').value + this.$t('base.newMessageText')
-          });
-        }
+        // if ( window.plus ) {
+        //   plus.push.createMessage(message.message, 'text', {
+        //     title: data.pairs.find(e => e.key == 'sendName').value + this.$t('base.newMessageText')
+        //   });
+        // }
         this.$vux.toast.show({
           text: data.pairs.find(e => e.key == 'sendName').value + this.$t('base.newMessageText'),
           time: 1500,

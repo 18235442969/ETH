@@ -98,7 +98,6 @@ export default {
           this.code = res.data.data;
         } else {
           this.vuxUtils.showWarn(this.$t('base.codeSendError'));
-          console.log(res)
         }
       } catch(e) {
         this.$vux.loading.hide();

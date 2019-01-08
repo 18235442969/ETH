@@ -86,12 +86,14 @@ const cashout = ({ amt, addr, pin }) => {
  * @param  {[String]} options.amt [数量]
  * @param  {[String]} options.to  [地址]
  * @param  {[String]} options.pin [交易密码]
+ * @param  {[String]} options.price [单价]
  */
-const transfer = ({ amt, to, pin }) => {
+const transfer = ({ amt, to, pin, price }) => {
 	const data = {
 		amt,
 		to,
-		pin
+		pin,
+		price
 	};
 	return service.post('/transfer', data);
 }
