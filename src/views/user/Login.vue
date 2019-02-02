@@ -95,7 +95,7 @@ export default {
             path: '/'
           });
         } else {
-          this.vuxUtils.showWarn(this.$t('login.loginError'));
+          this.vuxUtils.apiError(this, res.data, this.$t('login.loginError'));
         }
       } catch(e) {
         this.$vux.loading.hide();

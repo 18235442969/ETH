@@ -98,7 +98,7 @@ export default {
         if (res.data.succeed == 'true') {
           this.list = res.data.data;
         } else {
-          this.vuxUtils.showWarn(this.$t('home.user.platformAnnouncement.errorText'));
+          this.vuxUtils.apiError(this, res.data, this.$t('home.user.platformAnnouncement.errorText'));
         }
       } catch(e) {
         this.vuxUtils.showWarn(this.$t('home.user.platformAnnouncement.errorText'));

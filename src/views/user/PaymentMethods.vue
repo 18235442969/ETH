@@ -170,7 +170,7 @@ export default {
           auth.setUserInfo(JSON.stringify(userInfo));
         } else {
           this.$vux.loading.hide();
-          this.vuxUtils.showWarn(this.$t('home.user.paymentMethods.settingWarnText'));
+          this.vuxUtils.apiError(this, res.data, this.$t('home.user.paymentMethods.settingWarnText'));
         }
       } catch(e) {
         this.$vux.loading.hide();

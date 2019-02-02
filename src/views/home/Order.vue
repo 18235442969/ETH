@@ -121,7 +121,7 @@ export default {
             this.clearChatHistory(userIdArr);
           }
         } else {
-          this.vuxUtils.showWarn(this.$t('home.mail.order.getOrderErrorText'));
+          this.vuxUtils.apiError(this, res.data, this.$t('home.mail.order.getOrderErrorText'));
         }
       } catch(e) {
         this.vuxUtils.showWarn(this.$t('home.mail.order.getOrderErrorText'));
@@ -198,7 +198,7 @@ export default {
           let index = this.list.findIndex(e => e.id == id);
           this.list[index] = Object.assign(this.list.find(e => e.id == id), data);
         } else {
-          this.vuxUtils.showWarn(this.$t('home.mail.order.setFail'));
+          this.vuxUtils.apiError(this, res.data, this.$t('home.mail.order.setFail'));
         }
       } catch(e) {
         return that.vuxUtils.showWarn(this.$t('home.mail.order.setFail'));

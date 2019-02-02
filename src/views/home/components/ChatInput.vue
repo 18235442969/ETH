@@ -116,7 +116,7 @@ export default {
             that.vuxUtils.hideToast();
           } else {
             that.vuxUtils.hideToast();
-            that.vuxUtils.showWarn(this.$t('home.mail.chat.imageUploadError'));
+            this.vuxUtils.apiError(this, res.data, this.$t('home.mail.chat.imageUploadError'));
           }
         }).catch(err => {
           that.vuxUtils.hideToast();

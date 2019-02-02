@@ -88,7 +88,7 @@ export default {
           this.amount = res.data.data.amount;
           this.freeze = res.data.data.freeze;
         } else {
-          this.vuxUtils.showWarn(this.$t('home.getBalanceWarnText'));
+          this.vuxUtils.apiError(this, res.data, this.$t('home.getBalanceWarnText'));
         }
       } catch(e) {
         this.vuxUtils.showWarn(this.$t('home.getBalanceWarnText'));

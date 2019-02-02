@@ -121,7 +121,7 @@ export default {
           this.userPrice = '';
           this.password = '';
         } else {
-          this.vuxUtils.showWarn(this.$t('home.ecolog.transfer.failText'));
+          this.vuxUtils.apiError(this, res.data, this.$t('home.ecolog.transfer.failText'));
         }
       } catch (e) {
         this.$vux.loading.hide();

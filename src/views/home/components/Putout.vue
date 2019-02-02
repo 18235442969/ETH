@@ -178,7 +178,7 @@ export default {
 
           this.$vux.toast.show(this.$t('home.ecolog.putOut.submitSuccessText'));
         } else {
-          this.vuxUtils.showWarn(this.$t("home.ecolog.putOut.passwordErrorText"));
+          this.vuxUtils.apiError(this, res.data, this.$t("home.ecolog.putOut.passwordErrorText"));
         }
       } catch(e) {
         this.$vux.loading.hide();

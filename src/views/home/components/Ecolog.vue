@@ -93,7 +93,9 @@
               </flexbox-item>
             </flexbox>
           </flexbox-item>
-          <!-- <flexbox-item :span="6" class="operation-item" v-if="level > 0">
+        </flexbox>
+        <!-- <flexbox :gutter="5" style="margin-top: 5px;">
+          <flexbox-item :span="6" class="operation-item" v-if="level > 0" @click.native="changePage('releaseMenu', 'lower')">
             <flexbox :gutter="0">
               <flexbox-item :span="5" class='operation-img'>
                 <img src="../../../assets/image/lowerLevel.png">
@@ -102,10 +104,10 @@
                 {{ $t("home.ecolog.operationTwoText") }}
               </flexbox-item>
             </flexbox>
-          </flexbox-item> -->
-        </flexbox>
+          </flexbox-item>
+        </flexbox> -->
         <!-- <flexbox :gutter="5" style="margin-top: 5px;">
-          <flexbox-item :span="6" class="operation-item" v-if="level > 1">
+          <flexbox-item :span="6" class="operation-item" v-if="level > 1" @click.native="changePage('releaseMenu', 'middle')">
             <flexbox :gutter="0">
               <flexbox-item :span="5" class='operation-img'>
                 <img src="../../../assets/image/middleLevel.png">
@@ -115,7 +117,7 @@
               </flexbox-item>
             </flexbox>
           </flexbox-item>
-          <flexbox-item :span="6" class="operation-item" v-if="level > 2">
+          <flexbox-item :span="6" class="operation-item" v-if="level > 2" @click.native="changePage('releaseMenu', 'high')">
             <flexbox :gutter="0">
               <flexbox-item :span="5" class='operation-img'>
                 <img src="../../../assets/image/highLevel.png">
@@ -228,10 +230,19 @@ export default {
     /**
      * [changePage 切换页面]
      */
-    changePage(name) {
-      this.$router.push({
-        name: name,
-      })
+    changePage(name, type) {
+      if (type) {
+        this.$router.push({
+          name: name,
+          params: {
+            type: type
+          }
+        })
+      } else {
+        this.$router.push({
+          name: name,
+        })
+      }
     },
     /**
      * [putIn 投入]
@@ -260,7 +271,7 @@ export default {
         if (res.data.succeed == 'true') {
           this.noticeList = res.data.data.slice(0, 3);
         } else {
-          this.vuxUtils.showWarn(this.$t('home.user.platformAnnouncement.errorText'));
+          this.vuxUtils.apiError(this, res.data, this.$t('home.user.platformAnnouncement.errorText'));
         }
       } catch (e) {
         this.vuxUtils.showWarn(this.$t('home.user.platformAnnouncement.errorText'));

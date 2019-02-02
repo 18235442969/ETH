@@ -126,7 +126,7 @@ service.interceptors.request.use(config => {
 service.interceptors.response.use(response => {
   return response
 }, error => {
-  console.log('Response Error' + error)
+  console.log('Response Error' + error);
   return Promise.reject(error)
 })
 

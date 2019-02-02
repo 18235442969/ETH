@@ -108,7 +108,7 @@ export default {
             this.list.concat(data.list);
           }
         } else {
-          this.vuxUtils.showWarn(this.$t('home.user.myFamily.getWarnText'));
+          this.vuxUtils.apiError(this, res.data, this.$t('home.user.myFamily.getWarnText'));
         }
       } catch(e) {
         this.vuxUtils.showWarn(this.$t('home.user.myFamily.getWarnText'));

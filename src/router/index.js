@@ -20,19 +20,28 @@ Router.prototype.goAppBack = function () {
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   routes: [
     userRouter,
     homeRouter,
     {
-    	path: '/login',
-		  name: 'login',
-		  component: Login
+      path: '/login',
+      name: 'login',
+      component: Login
     },
     {
-    	path: '/registe',
-		  name: 'registe',
-		  component: Registe
+      path: '/registe',
+      name: 'registe',
+      component: Registe
     }
   ]
+});
+
+router.beforeEach((to, from, next) => {
+  if (to.path === '/user/releaseMenu') {
+    to.meta.title = `${to.params.type}Title`
+  }
+  next();
 })
+
+export default router;

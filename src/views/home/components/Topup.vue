@@ -120,7 +120,7 @@ export default {
           this.address = res.data.data.address;
           this.$vux.toast.show(this.$t('home.user.topUp.successText'));
         } else {
-          return this.vuxUtils.showWarn(this.$t('home.user.topUp.failText'));
+          this.vuxUtils.apiError(this, res.data, this.$t('home.user.topUp.failText'));
         }
       } catch(e) {
         this.$vux.loading.hide();

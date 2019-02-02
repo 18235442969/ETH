@@ -97,7 +97,7 @@ export default {
           this.isCodeSend = true;
           this.code = res.data.data;
         } else {
-          this.vuxUtils.showWarn(this.$t('base.codeSendError'));
+          this.vuxUtils.apiError(this, res.data, this.$t('base.codeSendError'));
         }
       } catch(e) {
         this.$vux.loading.hide();
@@ -133,7 +133,7 @@ export default {
           this.username = '';
           this.password = '';
         } else {
-          this.vuxUtils.showWarn(this.$t('home.user.payPassword.setError'));
+          this.vuxUtils.apiError(this, res.data, this.$t('home.user.payPassword.setError'));
         }
       } catch(e) {
         this.$vux.loading.hide();

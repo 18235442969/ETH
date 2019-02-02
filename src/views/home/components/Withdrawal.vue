@@ -115,7 +115,7 @@ export default {
           this.password = '';
           this.$vux.toast.show(this.$t('home.user.withdrawal.successText'));
         } else {
-          return this.vuxUtils.showWarn(this.$t('home.user.withdrawal.failText'));
+          this.vuxUtils.apiError(this, res.data, this.$t('home.user.withdrawal.failText'));
         }
       } catch(e) {
         this.$vux.loading.hide();

@@ -216,7 +216,7 @@ export default {
             this[`${page}List`] = this[`${page}List`].concat(data.list);
           }
         } else {
-          this.vuxUtils.showWarn(this.$t('home.user.bill.errorText'));
+          this.vuxUtils.apiError(this, res.data, this.$t('home.user.bill.errorText'));
         }
       } catch(e) {
         this.vuxUtils.showWarn(this.$t('home.user.bill.errorText'));

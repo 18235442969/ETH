@@ -19,6 +19,7 @@ import Transfer from '@/views/home/Transfer.vue'
 import RevenueBill from '@/views/home/RevenueBill.vue'
 import RewardBill from '@/views/home/RewardBill.vue'
 import Order from '@/views/home/Order.vue'
+import ReleaseMenu from '@/views/home/ReleaseMenu.vue'
 
 
 const userRouter = {
@@ -124,13 +125,19 @@ const userRouter = {
       meta: {
         title: 'rewardBillTitle',
       }
-    },
-    ,{
+    },{
       path: 'order',
       component: Order,
       name: 'order',
       meta: {
         title: 'orderTitle',
+      }
+    }, {
+      path: 'releaseMenu',
+      component: ReleaseMenu,
+      name: 'releaseMenu',
+      meta: {
+        title: 'lowerTitle',
       }
     }
   ]

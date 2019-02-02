@@ -148,7 +148,7 @@ export default {
           this.isCodeSend = true;
           this.code = res.data.data;
         } else {
-          this.vuxUtils.showWarn(this.$t('base.codeSendError'));
+          this.vuxUtils.apiError(this, res.data, this.$t('base.codeSendError'));
         }
       } catch(e) {
         this.$vux.loading.hide();
@@ -185,7 +185,7 @@ export default {
           this.code = '';
           this.password = '';
         } else {
-          this.vuxUtils.showWarn(this.$t('home.user.resetPassword.setError'));
+          this.vuxUtils.apiError(this, res.data, this.$t('home.user.resetPassword.setError'));
         }
       } catch(e) {
         this.$vux.loading.hide();

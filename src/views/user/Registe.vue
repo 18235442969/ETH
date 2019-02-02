@@ -216,7 +216,7 @@ export default {
           this.phoneCode = res.data.data;
           this.emailCode = res.data.data;
         } else {
-          this.vuxUtils.showWarn(this.$t('base.codeSendError'));
+          this.vuxUtils.apiError(this, res.data, this.$t('base.codeSendError'));
         }
       } catch(e) {
         this.$vux.loading.hide();
@@ -280,7 +280,7 @@ export default {
           this.$vux.toast.show(this.$t('registe.registeSuccess'));
           this.$router.goAppBack();
         } else {
-          this.vuxUtils.showWarn(this.$t('registe.registeFail'));
+          this.vuxUtils.apiError(this, res.data, this.$t('registe.registeFail'));
         }
       } catch(e) {
         this.$vux.loading.hide();

@@ -34,8 +34,25 @@ const showWarn = (msg) => {
 	})
 }
 
+/**
+ * [错误信息]
+ * @param  {[type]} vue  [vue指向]
+ * @param  {[type]} data [返回数据]
+ * @param  {[type]} text [提示信息]
+ */
+const apiError = (vue, data, text) => {
+	let errorCodeList = ['100', '101', '102', '10', '201', '200', '202', '302', '301', '303', '5'];
+	let str = errorCodeList.includes(data.code) ? vue.$t(`errorCode.${data.code}`) : text;
+	Vue.$vux.toast.show({
+		text: str,
+    type: 'warn',
+    time: 1000
+	})
+}
+
 export default {
 	showToast,
 	hideToast,
-	showWarn
+	showWarn,
+	apiError
 }

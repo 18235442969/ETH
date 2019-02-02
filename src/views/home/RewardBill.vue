@@ -55,7 +55,7 @@ export default {
             this.list = this.list.concat(data.list);
           }
         } else {
-          this.vuxUtils.showWarn(this.$t('home.user.bill.errorText'));
+          this.vuxUtils.apiError(this, res.data, this.$t('home.user.bill.errorText'));
         }
       } catch(e) {
         this.vuxUtils.showWarn(this.$t('home.user.bill.errorText'));
